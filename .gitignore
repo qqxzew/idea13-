@@ -1,0 +1,9 @@
+# generated artefacts
+data/portal.sqlite3
+data/portal.sqlite3-journal
+data/cache/*
+!data/cache/.gitkeep
+logs/*.log
+__pycache__/
+*.pyc
+.venv/

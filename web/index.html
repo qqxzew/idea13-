@@ -1,0 +1,89 @@
+<!doctype html>
+<html lang="cs">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Portál životních situací — MČ Praha 13</title>
+<meta name="description" content="Co zařídit, do kdy, kde a s jakými doklady. Prototyp pro MČ Praha 13.">
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<a class="skip-link" href="#obsah" data-i18n="skip">Přejít na obsah</a>
+
+<header class="site-header">
+  <div class="wrap header-inner">
+    <a class="brand" href="#/">
+      <span class="brand-mark">P13</span>
+      <span class="brand-text">
+        <strong data-i18n="brandTitle">Portál životních situací</strong>
+        <small data-i18n="brandSub">Městská část Praha 13 — prototyp</small>
+      </span>
+    </a>
+    <nav class="lang" aria-label="Jazyk / Language">
+      <button type="button" class="lang-btn" data-lang="cs" aria-pressed="true">CS</button>
+      <button type="button" class="lang-btn" data-lang="uk" aria-pressed="false">UK</button>
+      <button type="button" class="lang-btn" data-lang="ru" aria-pressed="false">RU</button>
+    </nav>
+  </div>
+</header>
+
+<main id="obsah" class="wrap">
+
+  <!-- ============ Obrazovka 1: prehled situaci ============ -->
+  <section id="screen-list" class="screen">
+    <h1 data-i18n="listTitle">Vyberte svou životní situaci</h1>
+    <p class="lead" data-i18n="listLead">Dostanete seznam kroků: co udělat, do kdy, kam jít a jaké doklady si vzít.</p>
+
+    <div class="controls">
+      <label class="search">
+        <span class="visually-hidden" data-i18n="searchLabel">Hledat situaci</span>
+        <input type="search" id="search" autocomplete="off" data-i18n-placeholder="searchPlaceholder"
+               placeholder="Hledat (např. pes, škola, pobyt)">
+      </label>
+      <div class="filters" role="group" aria-label="Filtr">
+        <button type="button" class="chip is-active" data-audience="" data-i18n="filterAll">Vše</button>
+        <button type="button" class="chip" data-audience="citizen" data-i18n="filterCitizen">Občan</button>
+        <button type="button" class="chip" data-audience="foreigner" data-i18n="filterForeigner">Cizinec</button>
+      </div>
+    </div>
+
+    <p id="list-note" class="fallback-note" hidden></p>
+    <p id="list-count" class="count" aria-live="polite"></p>
+    <div id="cards" class="cards"></div>
+    <p id="list-empty" class="empty" hidden data-i18n="noResults">Nic nenalezeno. Zkuste jiné slovo.</p>
+  </section>
+
+  <!-- ============ Obrazovka 2: checklist kroku ============ -->
+  <section id="screen-detail" class="screen" hidden>
+    <a class="back" href="#/" data-i18n="back">&larr; Zpět na přehled</a>
+    <p id="detail-category" class="eyebrow"></p>
+    <h1 id="detail-title"></h1>
+    <p id="detail-summary" class="lead"></p>
+    <p id="detail-note" class="fallback-note" hidden></p>
+    <p id="detail-legend" class="legend"></p>
+    <ol id="steps" class="steps"></ol>
+    <section id="p13-box" class="katalog" hidden>
+      <h2 data-i18n="p13Title">Údaje stažené ze stránky MČ Praha 13</h2>
+      <dl id="p13-list" class="p13-list"></dl>
+      <p id="p13-source" class="muted"></p>
+    </section>
+    <section id="katalog-box" class="katalog" hidden>
+      <h2 data-i18n="katalogTitle">Související služby z Katalogu služeb veřejné správy</h2>
+      <ul id="katalog-list"></ul>
+    </section>
+  </section>
+
+</main>
+
+<footer class="site-footer">
+  <div class="wrap">
+    <p data-i18n="footerData">Data: Katalog služeb veřejné správy (CC BY 4.0), stránky „Jak si zařídit“ MČ Praha 13, Sbírka zákonů.</p>
+    <p class="warn" data-i18n="footerWarn">Prototyp pro ideathon. Nejde o závazné právní stanovisko. Neověřené lhůty jsou v seznamu označené.</p>
+    <p id="footer-stats" class="muted"></p>
+  </div>
+</footer>
+
+<script src="app.js"></script>
+</body>
+</html>

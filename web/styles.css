@@ -1,0 +1,197 @@
+/* Portal zivotnich situaci MC Praha 13 - strizlivy uradni vzhled.
+   Zadne gradienty, zadne animace, systemove pismo, modry akcent. */
+
+:root {
+  --modra: #00519e;          /* akcent podle vizualu praha13.cz */
+  --modra-tmava: #003a72;
+  --modra-svetla: #eaf1f8;
+  --text: #1b1f24;
+  --text-slaby: #5a6470;
+  --linka: #d7dde4;
+  --plocha: #ffffff;
+  --pozadi: #f4f6f8;
+  --jantar: #8a5a00;         /* neoverena lhuta */
+  --jantar-plocha: #fff6e3;
+  --zelena: #1f6b3a;         /* overena lhuta */
+  --sede: #6b7480;           /* lhuta se netyka */
+  --radius: 4px;
+}
+
+* { box-sizing: border-box; }
+
+html { -webkit-text-size-adjust: 100%; }
+
+body {
+  margin: 0;
+  background: var(--pozadi);
+  color: var(--text);
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  font-size: 17px;
+  line-height: 1.55;
+  overflow-wrap: break-word;
+}
+
+.wrap { width: 100%; max-width: 1040px; margin: 0 auto; padding: 0 16px; }
+
+.visually-hidden {
+  position: absolute; width: 1px; height: 1px; overflow: hidden;
+  clip: rect(0 0 0 0); white-space: nowrap;
+}
+.skip-link {
+  position: absolute; left: -9999px; top: 0; background: #fff; padding: 8px 12px; z-index: 10;
+}
+.skip-link:focus { left: 8px; top: 8px; }
+
+/* ---------- hlavicka ---------- */
+.site-header { background: var(--modra); color: #fff; }
+.header-inner {
+  display: flex; flex-wrap: wrap; gap: 12px;
+  align-items: center; justify-content: space-between;
+  padding-top: 14px; padding-bottom: 14px;
+}
+.brand { display: flex; align-items: center; gap: 12px; color: #fff; text-decoration: none; min-width: 0; }
+.brand-mark {
+  flex: 0 0 auto;
+  border: 2px solid rgba(255,255,255,.7); border-radius: var(--radius);
+  padding: 4px 8px; font-weight: 700; letter-spacing: .5px;
+}
+.brand-text { display: flex; flex-direction: column; min-width: 0; }
+.brand-text strong { font-size: 18px; line-height: 1.25; }
+.brand-text small { font-size: 13px; color: rgba(255,255,255,.85); }
+
+.lang { display: flex; gap: 6px; }
+.lang-btn {
+  background: transparent; color: #fff; border: 1px solid rgba(255,255,255,.6);
+  border-radius: var(--radius); padding: 6px 12px; font: inherit; font-size: 14px;
+  cursor: pointer; min-width: 44px;
+}
+.lang-btn[aria-pressed="true"] { background: #fff; color: var(--modra); border-color: #fff; font-weight: 600; }
+
+/* ---------- obecne ---------- */
+main { padding-top: 24px; padding-bottom: 40px; }
+h1 { font-size: 27px; line-height: 1.25; margin: 8px 0 8px; }
+h2 { font-size: 20px; margin: 0 0 8px; }
+.lead { color: var(--text-slaby); margin: 0 0 20px; max-width: 62ch; }
+.eyebrow { margin: 0; color: var(--modra); font-size: 13px; text-transform: uppercase; letter-spacing: .6px; }
+.count { color: var(--text-slaby); font-size: 14px; margin: 0 0 12px; }
+.empty { background: var(--plocha); border: 1px solid var(--linka); padding: 20px; border-radius: var(--radius); }
+.muted { color: var(--text-slaby); font-size: 13px; }
+
+.fallback-note {
+  background: var(--modra-svetla); border-left: 3px solid var(--modra);
+  padding: 10px 12px; margin: 0 0 16px; font-size: 14px;
+}
+
+/* ---------- vyhledavani a filtry ---------- */
+.controls {
+  display: flex; flex-wrap: wrap; gap: 10px; align-items: center;
+  margin-bottom: 18px;
+}
+.search { flex: 1 1 260px; min-width: 0; }
+.search input {
+  width: 100%; padding: 11px 12px; font: inherit;
+  border: 1px solid #b9c2cc; border-radius: var(--radius); background: #fff;
+}
+.search input:focus, .chip:focus, .lang-btn:focus, .card:focus-visible {
+  outline: 3px solid #ffbf47; outline-offset: 1px;
+}
+.filters { display: flex; flex-wrap: wrap; gap: 6px; }
+.chip {
+  background: #fff; border: 1px solid #b9c2cc; border-radius: var(--radius);
+  padding: 10px 14px; font: inherit; font-size: 15px; cursor: pointer; color: var(--text);
+}
+.chip.is-active { background: var(--modra); border-color: var(--modra); color: #fff; font-weight: 600; }
+
+/* ---------- karty situaci ---------- */
+.cards {
+  display: grid; gap: 12px;
+  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+}
+.card {
+  display: flex; flex-direction: column; gap: 8px;
+  background: var(--plocha); border: 1px solid var(--linka);
+  border-top: 3px solid var(--modra); border-radius: var(--radius);
+  padding: 16px; text-decoration: none; color: inherit; min-width: 0;
+}
+.card:hover { border-color: var(--modra); }
+.card h2 { font-size: 18px; margin: 0; color: var(--modra-tmava); }
+.card p { margin: 0; font-size: 14px; color: var(--text-slaby); }
+.card-meta { display: flex; flex-wrap: wrap; gap: 6px; margin-top: auto; padding-top: 6px; }
+
+.tag {
+  display: inline-block; font-size: 12px; padding: 2px 8px;
+  border: 1px solid var(--linka); border-radius: var(--radius);
+  background: #fbfcfd; color: var(--text-slaby);
+}
+.tag-audience { border-color: #b9c2cc; }
+.tag-todo { background: var(--jantar-plocha); border-color: #e3c78a; color: var(--jantar); }
+
+/* ---------- checklist kroku ---------- */
+.back { display: inline-block; margin-bottom: 8px; color: var(--modra); text-decoration: none; font-size: 15px; }
+.back:hover { text-decoration: underline; }
+.legend { font-size: 14px; color: var(--text-slaby); margin: 0 0 16px; }
+
+.steps { list-style: none; margin: 0; padding: 0; display: grid; gap: 14px; }
+.step {
+  background: var(--plocha); border: 1px solid var(--linka);
+  border-left: 4px solid var(--modra); border-radius: var(--radius);
+  padding: 16px; min-width: 0;
+}
+.step.is-todo { border-left-color: #c98f16; }
+.step-head { display: flex; gap: 10px; align-items: baseline; }
+.step-number {
+  flex: 0 0 auto; width: 28px; height: 28px; border-radius: 50%;
+  background: var(--modra); color: #fff; font-size: 14px; font-weight: 700;
+  display: inline-flex; align-items: center; justify-content: center;
+}
+.step.is-todo .step-number { background: #c98f16; }
+.step h3 { margin: 0; font-size: 18px; line-height: 1.35; }
+.step-body { margin: 8px 0 12px; color: var(--text-slaby); font-size: 15px; }
+
+.deadline {
+  border: 1px solid var(--linka); border-radius: var(--radius);
+  padding: 12px; margin-bottom: 12px; background: #fbfcfd;
+}
+.deadline-label { font-size: 12px; text-transform: uppercase; letter-spacing: .6px; color: var(--text-slaby); }
+.deadline-value { font-size: 22px; line-height: 1.25; font-weight: 700; color: var(--zelena); }
+.deadline-source { font-size: 13px; color: var(--text-slaby); margin-top: 4px; }
+.deadline.is-todo { background: var(--jantar-plocha); border-color: #e3c78a; }
+.deadline.is-todo .deadline-value { color: var(--jantar); font-size: 19px; }
+.deadline.is-na { background: #f7f8f9; }
+.deadline.is-na .deadline-value { color: var(--sede); font-size: 19px; font-weight: 600; }
+
+.rows { display: grid; gap: 10px; }
+.row-label { font-size: 12px; text-transform: uppercase; letter-spacing: .6px; color: var(--text-slaby); }
+.row-value { font-size: 15px; }
+.row-value ul { margin: 4px 0 0; padding-left: 20px; }
+.row-value li { margin-bottom: 2px; }
+.row-sanction { border-left: 3px solid #b23a3a; padding-left: 10px; }
+
+.step-source {
+  margin-top: 14px; padding-top: 10px; border-top: 1px solid var(--linka);
+  font-size: 13px; color: var(--text-slaby);
+}
+.step-source a { color: var(--modra); }
+
+/* ---------- katalog ---------- */
+.katalog { margin-top: 28px; background: var(--plocha); border: 1px solid var(--linka); border-radius: var(--radius); padding: 16px; }
+.katalog ul { margin: 0; padding-left: 20px; font-size: 15px; }
+.p13-list { margin: 0 0 10px; font-size: 15px; }
+.p13-list dt { font-size: 12px; text-transform: uppercase; letter-spacing: .6px; color: var(--text-slaby); }
+.p13-list dd { margin: 0 0 8px; white-space: pre-line; }
+
+/* ---------- paticka ---------- */
+.site-footer { background: #eceff2; border-top: 1px solid var(--linka); padding: 20px 0 32px; font-size: 14px; color: var(--text-slaby); }
+.site-footer p { margin: 0 0 6px; }
+.site-footer .warn { color: #7a4a00; }
+
+/* ---------- mobil ---------- */
+@media (max-width: 520px) {
+  body { font-size: 16px; }
+  h1 { font-size: 23px; }
+  .cards { grid-template-columns: 1fr; }
+  .deadline-value { font-size: 20px; }
+  .chip, .search input { width: 100%; }
+  .filters { width: 100%; }
+  .chip { flex: 1 1 30%; text-align: center; }
+}

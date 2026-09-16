@@ -1,0 +1,1261 @@
+{
+  "_comment": [
+    "ZDROJ PRAVDY pro 20 zivotnich situaci. Seeder (seed.py) z nej plni tabulky situations a steps.",
+    "PRAVIDLO: lhuty a sankce se sem NEVYMYSLEJI. Bud je k nim presny zdroj (deadline_source = URL nebo § zakona)",
+    "a deadline_status = 'verified', nebo je hodnota null a deadline_status = 'manual_todo' + verify_hint,",
+    "kde se ma lhuta dohledat. 'not_applicable' = v teto situaci zadna lhuta neexistuje.",
+    "Chybejici klice doplni seeder vychozimi hodnotami (null, prazdne pole, deadline_status manual_todo)."
+  ],
+  "_defaults": {
+    "urad": "Úřad MČ Praha 13, Sluneční náměstí 2580/13, 158 00 Praha 5",
+    "poznamka_uredni_hodiny": "office_hours zamerne null - doplni je parser z bodu 9 stranek praha13.cz"
+  },
+  "situations": [
+    {
+      "slug": "prestehovani-do-prahy-13",
+      "title_cs": "Přestěhování do Prahy 13 (změna trvalého pobytu)",
+      "title_uk": "Переїзд до Праги 13 (зміна постійного місця проживання)",
+      "title_ru": "Переезд в Прагу 13 (смена постоянного места жительства)",
+      "summary_cs": "Ohlášení nové adresy trvalého pobytu a navazující výměna dokladů a oznámení institucím.",
+      "summary_uk": "Повідомлення про нову адресу постійного проживання, обмін документів і повідомлення установам.",
+      "summary_ru": "Заявление о новом адресе постоянного проживания, обмен документов и уведомление учреждений.",
+      "category": "Bydlení",
+      "audience": "all",
+      "katalog_keywords": "trvalý pobyt, evidence obyvatel, ohlášení změny místa trvalého pobytu, občanský průkaz",
+      "steps": [
+        {
+          "title_cs": "Ohlásit změnu trvalého pobytu na ohlašovně ÚMČ Praha 13",
+          "title_uk": "Повідомити про зміну постійного проживання у відділі реєстрації УМЧ Прага 13",
+          "title_ru": "Заявить о смене постоянного места жительства в отделе регистрации УМЧ Прага 13",
+          "body_cs": "Změnu ohlašujete osobně na ohlašovně podle nové adresy. Vyplníte přihlašovací lístek k trvalému pobytu a zaplatíte správní poplatek podle sazebníku zákona o správních poplatcích.",
+          "body_uk": "Зміну заявляєте особисто у відділі реєстрації за новою адресою. Заповнюєте реєстраційний бланк і сплачуєте адміністративний збір згідно з тарифом закону про адміністративні збори.",
+          "body_ru": "Изменение заявляете лично в отделе регистрации по новому адресу. Заполняете регистрационный бланк и платите административный сбор согласно тарифу закона об административных сборах.",
+          "authority": "MČ Praha 13 – odbor občansko-správní (ohlašovna)",
+          "location": "Úřad MČ Praha 13, Sluneční náměstí 2580/13, 158 00 Praha 5",
+          "documents": ["platný občanský průkaz", "doklad o vlastnictví nebo o oprávněnosti užívání bytu (výpis z katastru, nájemní smlouva)", "úředně ověřené potvrzení oprávněné osoby, pokud nejste vlastníkem", "vyplněný přihlašovací lístek k trvalému pobytu"],
+          "deadline_status": "manual_todo",
+          "verify_hint": "Zákon č. 133/2000 Sb., o evidenci obyvatel, § 10 – ověřit, zda je stanovena lhůta pro ohlášení změny, a bod 13 na stránce praha13.cz.",
+          "source_type": "praha13",
+          "source_url": "https://www.praha13.cz/jak-si-zaridit/"
+        },
+        {
+          "title_cs": "Vyměnit občanský průkaz kvůli změně adresy",
+          "title_uk": "Замінити посвідчення особи через зміну адреси",
+          "title_ru": "Заменить удостоверение личности из-за смены адреса",
+          "body_cs": "Po zápisu nové adresy je potřeba požádat o nový občanský průkaz na oddělení osobních dokladů.",
+          "body_uk": "Після внесення нової адреси потрібно подати заяву на нове посвідчення особи у відділі особистих документів.",
+          "body_ru": "После внесения нового адреса нужно подать заявление на новое удостоверение личности в отделе личных документов.",
+          "authority": "MČ Praha 13 – oddělení osobních dokladů",
+          "location": "Úřad MČ Praha 13, Sluneční náměstí 2580/13, 158 00 Praha 5",
+          "documents": ["dosavadní občanský průkaz", "potvrzení o změně místa trvalého pobytu"],
+          "deadline_status": "manual_todo",
+          "verify_hint": "Zákon č. 269/2021 Sb., o občanských průkazech – ověřit lhůtu pro podání žádosti o nový průkaz po změně údaje.",
+          "source_type": "sbirka_zakonu",
+          "source_url": "https://www.zakonyprolidi.cz/cs/2021-269"
+        },
+        {
+          "title_cs": "Oznámit novou adresu zdravotní pojišťovně",
+          "title_uk": "Повідомити нову адресу страховій компанії",
+          "title_ru": "Сообщить новый адрес страховой компании",
+          "body_cs": "Pojištěnec je povinen oznámit své zdravotní pojišťovně změnu trvalého pobytu.",
+          "body_uk": "Застрахована особа зобов'язана повідомити свою страхову компанію про зміну постійного місця проживання.",
+          "body_ru": "Застрахованное лицо обязано сообщить своей страховой компании об изменении постоянного места жительства.",
+          "authority": "Zdravotní pojišťovna pojištěnce",
+          "documents": ["průkaz pojištěnce", "doklad o nové adrese"],
+          "deadline_text": "Do 30 dnů ode dne změny",
+          "deadline_days": 30,
+          "deadline_source": "§ 12 zákona č. 48/1997 Sb., o veřejném zdravotním pojištění",
+          "deadline_status": "verified",
+          "source_type": "sbirka_zakonu",
+          "source_url": "https://www.zakonyprolidi.cz/cs/1997-48"
+        },
+        {
+          "title_cs": "Oznámit změnu adresy dalším úřadům a institucím",
+          "title_uk": "Повідомити про зміну адреси інші установи",
+          "title_ru": "Сообщить об изменении адреса другим учреждениям",
+          "body_cs": "Podle situace jde o finanční úřad, ČSSZ, úřad práce, zaměstnavatele, banku, registr vozidel a školu či školku dítěte.",
+          "body_uk": "Залежно від ситуації це податкова, ČSSZ, служба зайнятості, роботодавець, банк, реєстр транспортних засобів, школа або садок дитини.",
+          "body_ru": "В зависимости от ситуации это налоговая, ČSSZ, служба занятости, работодатель, банк, реестр транспортных средств, школа или садик ребёнка.",
+          "authority": "Různé instituce podle vaší situace",
+          "deadline_status": "manual_todo",
+          "verify_hint": "Lhůty se liší podle instituce – ověřit jednotlivě (daňový řád, zákon o zaměstnanosti, podmínky banky).",
+          "source_type": "manual"
+        }
+      ]
+    },
+    {
+      "slug": "dite-nastupuje-do-1-tridy",
+      "title_cs": "Dítě nastupuje do 1. třídy ZŠ (zápis)",
+      "title_uk": "Дитина йде до 1 класу початкової школи (запис)",
+      "title_ru": "Ребёнок идёт в 1 класс начальной школы (запись)",
+      "summary_cs": "Zápis do základní školy, spádovost v Praze 13 a případný odklad povinné školní docházky.",
+      "summary_uk": "Запис до початкової школи, шкільний округ у Празі 13 та можливе відтермінування обов'язкового навчання.",
+      "summary_ru": "Запись в начальную школу, школьный округ в Праге 13 и возможная отсрочка обязательного обучения.",
+      "category": "Vzdělávání",
+      "audience": "all",
+      "katalog_keywords": "zápis, základní škola, povinná školní docházka, spádová škola, odklad",
+      "steps": [
+        {
+          "title_cs": "Zjistit spádovou základní školu podle adresy",
+          "title_uk": "Дізнатися шкільний округ за адресою проживання",
+          "title_ru": "Узнать закреплённую школу по адресу проживания",
+          "body_cs": "Školské obvody základních škol stanoví obecně závazná vyhláška hlavního města Prahy. Do spádové školy má dítě přednostní právo na přijetí.",
+          "body_uk": "Шкільні округи визначає загальнообов'язкова постанова міста Праги. У закріпленій школі дитина має першочергове право на зарахування.",
+          "body_ru": "Школьные округа определяет общеобязательное постановление города Праги. В закреплённой школе ребёнок имеет преимущественное право на зачисление.",
+          "authority": "MČ Praha 13 – odbor školství",
+          "location": "Úřad MČ Praha 13, Sluneční náměstí 2580/13, 158 00 Praha 5",
+          "deadline_status": "not_applicable",
+          "source_type": "praha13",
+          "source_url": "https://www.praha13.cz/jak-si-zaridit/"
+        },
+        {
+          "title_cs": "Podat žádost o přijetí k povinné školní docházce (zápis)",
+          "title_uk": "Подати заяву про зарахування до школи (запис)",
+          "title_ru": "Подать заявление о зачислении в школу (запись)",
+          "body_cs": "Zápis se koná v termínu vyhlášeném školou. Povinná školní docházka začíná počátkem školního roku, který následuje po dni, kdy dítě dosáhne šestého roku věku.",
+          "body_uk": "Запис відбувається у строк, оголошений школою. Обов'язкове навчання починається з початку навчального року після досягнення дитиною шести років.",
+          "body_ru": "Запись проходит в срок, объявленный школой. Обязательное обучение начинается с начала учебного года после достижения ребёнком шести лет.",
+          "authority": "Ředitel příslušné základní školy",
+          "documents": ["rodný list dítěte", "průkaz totožnosti zákonného zástupce", "doklad o trvalém pobytu dítěte", "vyplněná žádost o přijetí"],
+          "deadline_text": "Zápis probíhá v období od 1. dubna do 30. dubna",
+          "deadline_source": "§ 36 odst. 4 zákona č. 561/2004 Sb., školský zákon",
+          "deadline_status": "verified",
+          "sanction_text": "Nepřihlášení dítěte k povinné školní docházce může být posuzováno jako přestupek podle školského zákona; konkrétní sankci stanoví správní orgán.",
+          "sanction_source": "zákon č. 561/2004 Sb., školský zákon",
+          "source_type": "sbirka_zakonu",
+          "source_url": "https://www.zakonyprolidi.cz/cs/2004-561"
+        },
+        {
+          "title_cs": "Požádat o odklad povinné školní docházky (pokud je potřeba)",
+          "title_uk": "Подати заяву про відтермінування обов'язкового навчання (за потреби)",
+          "title_ru": "Подать заявление об отсрочке обязательного обучения (при необходимости)",
+          "body_cs": "Žádost podává zákonný zástupce v době zápisu a dokládá ji doporučením školského poradenského zařízení a odborného lékaře nebo klinického psychologa.",
+          "body_uk": "Заяву подає законний представник під час запису разом із рекомендацією шкільної консультаційної установи та лікаря або клінічного психолога.",
+          "body_ru": "Заявление подаёт законный представитель во время записи вместе с рекомендацией школьного консультационного учреждения и врача или клинического психолога.",
+          "authority": "Ředitel příslušné základní školy",
+          "documents": ["žádost o odklad", "doporučení školského poradenského zařízení", "doporučení odborného lékaře nebo klinického psychologa"],
+          "deadline_text": "V době zápisu (tedy do 30. dubna)",
+          "deadline_source": "§ 37 odst. 1 zákona č. 561/2004 Sb., školský zákon",
+          "deadline_status": "verified",
+          "source_type": "sbirka_zakonu",
+          "source_url": "https://www.zakonyprolidi.cz/cs/2004-561"
+        },
+        {
+          "title_cs": "Převzít rozhodnutí o přijetí, případně se odvolat",
+          "title_uk": "Отримати рішення про зарахування, за потреби подати апеляцію",
+          "title_ru": "Получить решение о зачислении, при необходимости подать апелляцию",
+          "body_cs": "Seznam přijatých dětí škola zveřejňuje. Proti rozhodnutí o nepřijetí lze podat odvolání prostřednictvím ředitele školy.",
+          "body_uk": "Список зарахованих дітей школа оприлюднює. Проти рішення про відмову можна подати апеляцію через директора школи.",
+          "body_ru": "Список зачисленных детей школа публикует. Против решения об отказе можно подать апелляцию через директора школы.",
+          "authority": "Ředitel školy, odvolací orgán Magistrát hl. m. Prahy",
+          "deadline_text": "Odvolání do 15 dnů ode dne oznámení rozhodnutí",
+          "deadline_days": 15,
+          "deadline_source": "§ 83 odst. 1 zákona č. 500/2004 Sb., správní řád",
+          "deadline_status": "verified",
+          "source_type": "sbirka_zakonu",
+          "source_url": "https://www.zakonyprolidi.cz/cs/2004-500"
+        }
+      ]
+    },
+    {
+      "slug": "zapis-ditete-do-ms",
+      "title_cs": "Zápis dítěte do mateřské školy",
+      "title_uk": "Запис дитини до дитячого садка",
+      "title_ru": "Запись ребёнка в детский сад",
+      "summary_cs": "Přihláška do mateřské školy, povinné předškolní vzdělávání od pěti let a doklad o očkování.",
+      "summary_uk": "Заява до дитячого садка, обов'язкова дошкільна освіта з п'яти років і довідка про щеплення.",
+      "summary_ru": "Заявление в детский сад, обязательное дошкольное образование с пяти лет и справка о прививках.",
+      "category": "Vzdělávání",
+      "audience": "all",
+      "katalog_keywords": "mateřská škola, zápis, předškolní vzdělávání, přijetí dítěte",
+      "steps": [
+        {
+          "title_cs": "Vybrat mateřskou školu a zjistit termín zápisu",
+          "title_uk": "Обрати дитячий садок і дізнатися дату запису",
+          "title_ru": "Выбрать детский сад и узнать дату записи",
+          "body_cs": "MČ Praha 13 je zřizovatelem mateřských škol na svém území. Poslední rok před nástupem do ZŠ je předškolní vzdělávání povinné.",
+          "body_uk": "МЧ Прага 13 є засновником дитячих садків на своїй території. Останній рік перед школою дошкільна освіта є обов'язковою.",
+          "body_ru": "МЧ Прага 13 является учредителем детских садов на своей территории. Последний год перед школой дошкольное образование обязательно.",
+          "authority": "MČ Praha 13 – odbor školství",
+          "location": "Úřad MČ Praha 13, Sluneční náměstí 2580/13, 158 00 Praha 5",
+          "deadline_status": "not_applicable",
+          "source_type": "praha13",
+          "source_url": "https://www.praha13.cz/jak-si-zaridit/"
+        },
+        {
+          "title_cs": "Podat žádost o přijetí do mateřské školy",
+          "title_uk": "Подати заяву про зарахування до дитячого садка",
+          "title_ru": "Подать заявление о зачислении в детский сад",
+          "body_cs": "Žádost se podává ředitelce mateřské školy v termínu zápisu stanoveném školským zákonem.",
+          "body_uk": "Заява подається директору дитячого садка у строк запису, встановлений освітнім законом.",
+          "body_ru": "Заявление подаётся директору детского сада в срок записи, установленный законом об образовании.",
+          "authority": "Ředitel(ka) mateřské školy",
+          "documents": ["rodný list dítěte", "průkaz totožnosti zákonného zástupce", "vyplněná žádost o přijetí", "potvrzení lékaře o očkování (kromě dětí s povinným předškolním vzděláváním)"],
+          "deadline_text": "Zápis se koná v období od 2. května do 16. května",
+          "deadline_source": "§ 34 odst. 2 zákona č. 561/2004 Sb., školský zákon",
+          "deadline_status": "verified",
+          "source_type": "sbirka_zakonu",
+          "source_url": "https://www.zakonyprolidi.cz/cs/2004-561"
+        },
+        {
+          "title_cs": "Doložit potvrzení o očkování dítěte",
+          "title_uk": "Надати довідку про щеплення дитини",
+          "title_ru": "Предоставить справку о прививках ребёнка",
+          "body_cs": "Mateřská škola může přijmout pouze dítě, které se podrobilo stanoveným pravidelným očkováním, nejde-li o dítě s povinným předškolním vzděláváním.",
+          "body_uk": "Садок може зарахувати лише дитину, яка пройшла обов'язкові щеплення, крім дітей з обов'язковою дошкільною освітою.",
+          "body_ru": "Садик может принять только ребёнка, прошедшего обязательные прививки, кроме детей с обязательным дошкольным образованием.",
+          "authority": "Praktický lékař pro děti a dorost",
+          "documents": ["potvrzení praktického lékaře pro děti a dorost"],
+          "deadline_status": "not_applicable",
+          "source_type": "sbirka_zakonu",
+          "source_url": "https://www.zakonyprolidi.cz/cs/2000-258"
+        },
+        {
+          "title_cs": "Převzít rozhodnutí o přijetí, případně se odvolat",
+          "title_uk": "Отримати рішення про зарахування, за потреби подати апеляцію",
+          "title_ru": "Получить решение о зачислении, при необходимости подать апелляцию",
+          "body_cs": "Výsledky zápisu škola zveřejní. Proti rozhodnutí o nepřijetí lze podat odvolání.",
+          "body_uk": "Результати запису садок оприлюднює. Проти рішення про відмову можна подати апеляцію.",
+          "body_ru": "Результаты записи садик публикует. Против решения об отказе можно подать апелляцию.",
+          "authority": "Ředitel(ka) mateřské školy, odvolací orgán Magistrát hl. m. Prahy",
+          "deadline_text": "Odvolání do 15 dnů ode dne oznámení rozhodnutí",
+          "deadline_days": 15,
+          "deadline_source": "§ 83 odst. 1 zákona č. 500/2004 Sb., správní řád",
+          "deadline_status": "verified",
+          "source_type": "sbirka_zakonu",
+          "source_url": "https://www.zakonyprolidi.cz/cs/2004-500"
+        }
+      ]
+    },
+    {
+      "slug": "narozeni-ditete",
+      "title_cs": "Narození dítěte",
+      "title_uk": "Народження дитини",
+      "title_ru": "Рождение ребёнка",
+      "summary_cs": "Rodný list, určení otcovství, přihlášení ke zdravotní pojišťovně a rodinné dávky.",
+      "summary_uk": "Свідоцтво про народження, визнання батьківства, реєстрація у страховій компанії та сімейні виплати.",
+      "summary_ru": "Свидетельство о рождении, установление отцовства, регистрация в страховой компании и семейные пособия.",
+      "category": "Rodina",
+      "audience": "all",
+      "katalog_keywords": "narození, rodný list, matrika, určení otcovství, zápis narození",
+      "steps": [
+        {
+          "title_cs": "Vyřídit rodný list na matrice podle místa narození",
+          "title_uk": "Отримати свідоцтво про народження у РАЦСі за місцем народження",
+          "title_ru": "Получить свидетельство о рождении в ЗАГСе по месту рождения",
+          "body_cs": "Narození dítěte hlásí matrice poskytovatel zdravotních služeb. Rodiče doloží doklady a matrika vydá rodný list. Příslušná je matrika podle místa narození, ne podle bydliště.",
+          "body_uk": "Про народження до РАЦСу повідомляє медичний заклад. Батьки надають документи, РАЦС видає свідоцтво. Компетентний РАЦС за місцем народження, а не проживання.",
+          "body_ru": "О рождении в ЗАГС сообщает медицинское учреждение. Родители предоставляют документы, ЗАГС выдаёт свидетельство. Компетентен ЗАГС по месту рождения, а не проживания.",
+          "authority": "Matriční úřad podle místa narození dítěte",
+          "documents": ["oddací list rodičů nebo souhlasné prohlášení o určení otcovství", "průkazy totožnosti rodičů", "souhlasné prohlášení o jménu dítěte"],
+          "deadline_status": "manual_todo",
+          "verify_hint": "Zákon č. 301/2000 Sb., o matrikách – ověřit lhůtu pro oznámení narození matričnímu úřadu a pro určení jména.",
+          "source_type": "sbirka_zakonu",
+          "source_url": "https://www.zakonyprolidi.cz/cs/2000-301"
+        },
+        {
+          "title_cs": "Určit otcovství souhlasným prohlášením (nesezdaní rodiče)",
+          "title_uk": "Визнати батьківство спільною заявою (батьки не в шлюбі)",
+          "title_ru": "Установить отцовство совместным заявлением (родители не в браке)",
+          "body_cs": "Souhlasné prohlášení rodičů lze učinit na kterémkoli matričním úřadu, a to i před narozením dítěte.",
+          "body_uk": "Спільну заяву батьків можна подати у будь-якому РАЦСі, зокрема й до народження дитини.",
+          "body_ru": "Совместное заявление родителей можно подать в любом ЗАГСе, в том числе до рождения ребёнка.",
+          "authority": "Kterýkoli matriční úřad, např. MČ Praha 13 – matrika",
+          "location": "Úřad MČ Praha 13, Sluneční náměstí 2580/13, 158 00 Praha 5",
+          "documents": ["průkazy totožnosti obou rodičů", "rodné listy rodičů", "těhotenský průkaz nebo rodný list dítěte"],
+          "deadline_status": "not_applicable",
+          "source_type": "sbirka_zakonu",
+          "source_url": "https://www.zakonyprolidi.cz/cs/2012-89"
+        },
+        {
+          "title_cs": "Přihlásit dítě ke zdravotní pojišťovně",
+          "title_uk": "Зареєструвати дитину у страховій компанії",
+          "title_ru": "Зарегистрировать ребёнка в страховой компании",
+          "body_cs": "Za dítě plní oznamovací povinnost zákonný zástupce. Dítě je pojištěno u pojišťovny matky ke dni narození.",
+          "body_uk": "Обов'язок повідомлення за дитину виконує законний представник. Дитина застрахована у страховій матері з дня народження.",
+          "body_ru": "Обязанность уведомления за ребёнка исполняет законный представитель. Ребёнок застрахован в страховой матери со дня рождения.",
+          "authority": "Zdravotní pojišťovna matky",
+          "documents": ["rodný list dítěte", "průkaz pojištěnce zákonného zástupce"],
+          "deadline_text": "Do 8 dnů ode dne narození",
+          "deadline_days": 8,
+          "deadline_source": "§ 10 zákona č. 48/1997 Sb., o veřejném zdravotním pojištění",
+          "deadline_status": "verified",
+          "source_type": "sbirka_zakonu",
+          "source_url": "https://www.zakonyprolidi.cz/cs/1997-48"
+        },
+        {
+          "title_cs": "Požádat o porodné a rodičovský příspěvek",
+          "title_uk": "Подати заяву на допомогу при народженні та батьківську допомогу",
+          "title_ru": "Подать заявление на пособие при рождении и родительское пособие",
+          "body_cs": "Žádosti se podávají na Úřadu práce ČR, kontaktní pracoviště podle místa trvalého pobytu. Porodné je dávka testovaná podle příjmu.",
+          "body_uk": "Заяви подаються до Служби зайнятості ЧР за місцем постійного проживання. Допомога при народженні залежить від доходу сім'ї.",
+          "body_ru": "Заявления подаются в Службу занятости ЧР по месту постоянного жительства. Пособие при рождении зависит от дохода семьи.",
+          "authority": "Úřad práce ČR",
+          "documents": ["rodný list dítěte", "doklad totožnosti", "doklady o příjmech (u porodného)"],
+          "deadline_status": "manual_todo",
+          "verify_hint": "Zákon č. 117/1995 Sb., o státní sociální podpoře – ověřit, jak dlouho zpětně lze dávku přiznat.",
+          "source_type": "sbirka_zakonu",
+          "source_url": "https://www.zakonyprolidi.cz/cs/1995-117"
+        }
+      ]
+    },
+    {
+      "slug": "zalozeni-zivnosti",
+      "title_cs": "Založení živnosti",
+      "category": "Podnikání",
+      "audience": "all",
+      "summary_cs": "Ohlášení živnosti na živnostenském úřadě a navazující registrace u finančního úřadu, ČSSZ a zdravotní pojišťovny.",
+      "katalog_keywords": "ohlášení živnosti, živnostenské oprávnění, živnostenský rejstřík, volná živnost",
+      "steps": [
+        {
+          "title_cs": "Ohlásit živnost na živnostenském úřadě",
+          "body_cs": "Ohlášení se podává na jednotném registračním formuláři (JRF) na kterémkoli živnostenském úřadě, tedy i na ÚMČ Praha 13. Živnostenský úřad provede zápis do živnostenského rejstříku a vydá výpis.",
+          "authority": "MČ Praha 13 – odbor živnostenský",
+          "location": "Úřad MČ Praha 13, Sluneční náměstí 2580/13, 158 00 Praha 5",
+          "documents": ["průkaz totožnosti", "jednotný registrační formulář", "doklad o odborné způsobilosti (u vázaných, řemeslných a koncesovaných živností)", "doklad o právním důvodu užívání sídla", "doklad o zaplacení správního poplatku"],
+          "deadline_text": "Živnostenský úřad provede zápis a vydá výpis do 5 pracovních dnů ode dne doručení ohlášení",
+          "deadline_days": 5,
+          "deadline_source": "§ 47 odst. 1 zákona č. 455/1991 Sb., živnostenský zákon",
+          "deadline_status": "verified",
+          "sanction_text": "Podnikání bez živnostenského oprávnění je přestupkem neoprávněného podnikání; výši pokuty stanoví správní orgán podle živnostenského zákona.",
+          "sanction_source": "§ 61 zákona č. 455/1991 Sb., živnostenský zákon",
+          "source_type": "sbirka_zakonu",
+          "source_url": "https://www.zakonyprolidi.cz/cs/1991-455"
+        },
+        {
+          "title_cs": "Zaregistrovat se u finančního úřadu k dani z příjmů",
+          "body_cs": "Registraci lze provést přímo na živnostenském úřadě přes jednotný registrační formulář, jinak samostatně u finančního úřadu.",
+          "authority": "Finanční úřad pro hlavní město Prahu",
+          "documents": ["přihláška k registraci k dani z příjmů fyzických osob", "výpis ze živnostenského rejstříku"],
+          "deadline_text": "Do 15 dnů ode dne, kdy jste začali vykonávat samostatnou činnost",
+          "deadline_days": 15,
+          "deadline_source": "§ 39 odst. 1 zákona č. 586/1992 Sb., o daních z příjmů",
+          "deadline_status": "verified",
+          "source_type": "sbirka_zakonu",
+          "source_url": "https://www.zakonyprolidi.cz/cs/1992-586"
+        },
+        {
+          "title_cs": "Oznámit zahájení samostatné výdělečné činnosti ČSSZ",
+          "body_cs": "Oznámení se podává příslušné okresní správě sociálního zabezpečení, v Praze Pražské správě sociálního zabezpečení.",
+          "authority": "Pražská správa sociálního zabezpečení (ČSSZ)",
+          "documents": ["oznámení o zahájení samostatné výdělečné činnosti", "výpis ze živnostenského rejstříku"],
+          "deadline_text": "Nejpozději do 8. dne kalendářního měsíce následujícího po měsíci, v němž jste činnost zahájili",
+          "deadline_source": "§ 48 odst. 1 zákona č. 582/1991 Sb., o organizaci a provádění sociálního zabezpečení",
+          "deadline_status": "verified",
+          "source_type": "sbirka_zakonu",
+          "source_url": "https://www.zakonyprolidi.cz/cs/1991-582"
+        },
+        {
+          "title_cs": "Oznámit zahájení činnosti zdravotní pojišťovně",
+          "body_cs": "Jako OSVČ máte vůči své zdravotní pojišťovně oznamovací povinnost a od zahájení činnosti platíte zálohy na pojistné.",
+          "authority": "Zdravotní pojišťovna pojištěnce",
+          "documents": ["výpis ze živnostenského rejstříku", "průkaz pojištěnce"],
+          "deadline_text": "Do 8 dnů ode dne zahájení samostatné výdělečné činnosti",
+          "deadline_days": 8,
+          "deadline_source": "§ 10 zákona č. 48/1997 Sb., o veřejném zdravotním pojištění",
+          "deadline_status": "verified",
+          "source_type": "sbirka_zakonu",
+          "source_url": "https://www.zakonyprolidi.cz/cs/1997-48"
+        }
+      ]
+    },
+    {
+      "slug": "zmena-sidla-podnikani",
+      "title_cs": "Změna sídla podnikání",
+      "category": "Podnikání",
+      "audience": "all",
+      "summary_cs": "Ohlášení nového sídla živnostenskému úřadu, zápis do rejstříků a oznámení správci daně a pojišťovnám.",
+      "katalog_keywords": "změna sídla, živnostenský rejstřík, ohlášení změny, obchodní rejstřík",
+      "steps": [
+        {
+          "title_cs": "Zajistit doklad o právním důvodu užívání nového sídla",
+          "body_cs": "Doložit lze výpis z katastru nemovitostí, nájemní smlouvu nebo souhlas vlastníka s umístěním sídla.",
+          "authority": "Vlastník nemovitosti",
+          "documents": ["souhlas vlastníka s umístěním sídla", "nájemní smlouva nebo výpis z katastru nemovitostí"],
+          "deadline_status": "not_applicable",
+          "source_type": "sbirka_zakonu",
+          "source_url": "https://www.zakonyprolidi.cz/cs/1991-455"
+        },
+        {
+          "title_cs": "Ohlásit změnu sídla živnostenskému úřadu",
+          "body_cs": "Podnikatel je povinen oznámit živnostenskému úřadu změny údajů zapsaných v živnostenském rejstříku.",
+          "authority": "MČ Praha 13 – odbor živnostenský",
+          "location": "Úřad MČ Praha 13, Sluneční náměstí 2580/13, 158 00 Praha 5",
+          "documents": ["průkaz totožnosti", "doklad o právním důvodu užívání nového sídla", "změnový list jednotného registračního formuláře"],
+          "deadline_text": "Do 15 dnů ode dne vzniku změny",
+          "deadline_days": 15,
+          "deadline_source": "§ 49 odst. 1 zákona č. 455/1991 Sb., živnostenský zákon",
+          "deadline_status": "verified",
+          "source_type": "sbirka_zakonu",
+          "source_url": "https://www.zakonyprolidi.cz/cs/1991-455"
+        },
+        {
+          "title_cs": "Zapsat změnu sídla do obchodního rejstříku (právnické osoby)",
+          "body_cs": "Právnické osoby a podnikatelé zapsaní v obchodním rejstříku podávají návrh na zápis změny rejstříkovému soudu nebo přes notáře.",
+          "authority": "Městský soud v Praze (rejstříkový soud) nebo notář",
+          "documents": ["návrh na zápis změny", "doklad o právním důvodu užívání sídla", "rozhodnutí příslušného orgánu společnosti"],
+          "deadline_status": "manual_todo",
+          "verify_hint": "Zákon č. 304/2013 Sb., o veřejných rejstřících – ověřit lhůtu pro podání návrhu na zápis změny.",
+          "source_type": "sbirka_zakonu",
+          "source_url": "https://www.zakonyprolidi.cz/cs/2013-304"
+        },
+        {
+          "title_cs": "Oznámit změnu finančnímu úřadu, ČSSZ a zdravotní pojišťovně",
+          "body_cs": "Změnu registračních údajů je nutné oznámit správci daně a dále ČSSZ a zdravotní pojišťovně.",
+          "authority": "Finanční úřad pro hlavní město Prahu, ČSSZ, zdravotní pojišťovna",
+          "deadline_status": "manual_todo",
+          "verify_hint": "Daňový řád (zákon č. 280/2009 Sb.), § 127 – ověřit lhůtu pro oznámení změny registračních údajů.",
+          "source_type": "sbirka_zakonu",
+          "source_url": "https://www.zakonyprolidi.cz/cs/2009-280"
+        }
+      ]
+    },
+    {
+      "slug": "porizeni-psa",
+      "title_cs": "Pořízení psa (poplatek za psa)",
+      "category": "Daně a poplatky",
+      "audience": "all",
+      "summary_cs": "Přihlášení psa k místnímu poplatku na ÚMČ Praha 13, povinné označení čipem a očkování.",
+      "katalog_keywords": "pes, pes poplatek, poplatek ze psů, přihlášení psa, držitel psa, evidence psů, štěně, čipování",
+      "steps": [
+        {
+          "title_cs": "Přihlásit psa k místnímu poplatku ze psů",
+          "body_cs": "Poplatek platí držitel psa staršího tří měsíců podle místa svého trvalého pobytu, tedy v Praze 13 na ÚMČ Praha 13.",
+          "authority": "MČ Praha 13 – odbor ekonomický",
+          "location": "Úřad MČ Praha 13, Sluneční náměstí 2580/13, 158 00 Praha 5",
+          "documents": ["průkaz totožnosti", "očkovací průkaz nebo pas zvířete", "doklad o případném nároku na úlevu (držitel průkazu ZTP/P, důchodce apod.)"],
+          "deadline_status": "manual_todo",
+          "verify_hint": "Zákon č. 565/1990 Sb., o místních poplatcích, § 14a a obecně závazná vyhláška hl. m. Prahy o místním poplatku ze psů – ověřit lhůtu pro ohlášení a aktuální sazbu.",
+          "source_type": "praha13",
+          "source_url": "https://www.praha13.cz/jak-si-zaridit/"
+        },
+        {
+          "title_cs": "Nechat psa označit mikročipem",
+          "body_cs": "Očkování psa proti vzteklině je platné pouze tehdy, je-li pes trvale označen mikročipem nebo čitelným tetováním provedeným před 3. 7. 2011.",
+          "authority": "Veterinární lékař",
+          "documents": ["očkovací průkaz nebo pas zvířete v zájmovém chovu"],
+          "deadline_text": "Nejpozději před prvním očkováním proti vzteklině",
+          "deadline_source": "zákon č. 166/1999 Sb., veterinární zákon, ve spojení se zákonem č. 246/1992 Sb., na ochranu zvířat proti týrání",
+          "deadline_status": "verified",
+          "source_type": "sbirka_zakonu",
+          "source_url": "https://www.zakonyprolidi.cz/cs/1999-166"
+        },
+        {
+          "title_cs": "Zaplatit poplatek ve lhůtě splatnosti",
+          "body_cs": "Splatnost a sazbu poplatku stanoví obecně závazná vyhláška hlavního města Prahy. Poplatek lze platit převodem nebo na pokladně úřadu.",
+          "authority": "MČ Praha 13 – odbor ekonomický",
+          "location": "Úřad MČ Praha 13, Sluneční náměstí 2580/13, 158 00 Praha 5",
+          "deadline_status": "manual_todo",
+          "verify_hint": "Obecně závazná vyhláška hl. m. Prahy o místním poplatku ze psů – ověřit termíny splatnosti a možnost navýšení poplatku při prodlení.",
+          "source_type": "praha13",
+          "source_url": "https://www.praha13.cz/jak-si-zaridit/"
+        },
+        {
+          "title_cs": "Odhlásit psa při úhynu, ztrátě nebo změně držitele",
+          "body_cs": "Zánik poplatkové povinnosti je nutné ohlásit, jinak se poplatek vyměřuje dál.",
+          "authority": "MČ Praha 13 – odbor ekonomický",
+          "location": "Úřad MČ Praha 13, Sluneční náměstí 2580/13, 158 00 Praha 5",
+          "deadline_status": "manual_todo",
+          "verify_hint": "Zákon č. 565/1990 Sb., § 14a odst. 3 – ověřit lhůtu pro ohlášení zániku poplatkové povinnosti.",
+          "source_type": "praha13",
+          "source_url": "https://www.praha13.cz/jak-si-zaridit/"
+        }
+      ]
+    },
+    {
+      "slug": "ztrata-nebo-odcizeni-dokladu",
+      "title_cs": "Ztráta nebo odcizení dokladů",
+      "category": "Doklady",
+      "audience": "all",
+      "summary_cs": "Ohlášení ztráty občanského průkazu, cestovního pasu nebo řidičského průkazu a vydání nových dokladů.",
+      "katalog_keywords": "ztráta občanského průkazu, odcizení dokladu, vydání občanského průkazu, cestovní pas",
+      "steps": [
+        {
+          "title_cs": "Ohlásit ztrátu nebo odcizení občanského průkazu",
+          "body_cs": "Ohlášení lze učinit na kterémkoli obecním úřadu obce s rozšířenou působností, v Praze na úřadu městské části. Odcizení je vhodné ohlásit i Policii ČR.",
+          "authority": "MČ Praha 13 – oddělení osobních dokladů",
+          "location": "Úřad MČ Praha 13, Sluneční náměstí 2580/13, 158 00 Praha 5",
+          "documents": ["jiný doklad totožnosti, pokud jej máte (cestovní pas, řidičský průkaz)", "protokol Policie ČR při odcizení"],
+          "deadline_text": "Bez zbytečného odkladu poté, co ztrátu nebo odcizení zjistíte",
+          "deadline_source": "zákon č. 269/2021 Sb., o občanských průkazech",
+          "deadline_status": "verified",
+          "source_type": "sbirka_zakonu",
+          "source_url": "https://www.zakonyprolidi.cz/cs/2021-269"
+        },
+        {
+          "title_cs": "Požádat o vydání nového občanského průkazu",
+          "body_cs": "Žádost se podává osobně, fotografie se pořizuje na místě. Po dobu vyřizování lze požádat o potvrzení o občanském průkazu.",
+          "authority": "MČ Praha 13 – oddělení osobních dokladů",
+          "location": "Úřad MČ Praha 13, Sluneční náměstí 2580/13, 158 00 Praha 5",
+          "documents": ["potvrzení o ohlášení ztráty nebo odcizení", "rodný list nebo jiný doklad totožnosti", "správní poplatek podle sazebníku"],
+          "deadline_status": "manual_todo",
+          "verify_hint": "Zákon č. 269/2021 Sb., o občanských průkazech – ověřit lhůtu pro podání žádosti po ohlášení ztráty a lhůtu pro vydání průkazu.",
+          "source_type": "sbirka_zakonu",
+          "source_url": "https://www.zakonyprolidi.cz/cs/2021-269"
+        },
+        {
+          "title_cs": "Vyřídit náhradu cestovního pasu",
+          "body_cs": "Ztrátu nebo odcizení cestovního pasu ohlaste a požádejte o vydání nového. V zahraničí se ztráta hlásí zastupitelskému úřadu ČR.",
+          "authority": "MČ Praha 13 – oddělení osobních dokladů / zastupitelský úřad ČR",
+          "location": "Úřad MČ Praha 13, Sluneční náměstí 2580/13, 158 00 Praha 5",
+          "documents": ["doklad totožnosti", "protokol Policie ČR při odcizení"],
+          "deadline_status": "manual_todo",
+          "verify_hint": "Zákon č. 329/1999 Sb., o cestovních dokladech – ověřit lhůty pro ohlášení ztráty a pro vydání nového pasu.",
+          "source_type": "sbirka_zakonu",
+          "source_url": "https://www.zakonyprolidi.cz/cs/1999-329"
+        },
+        {
+          "title_cs": "Vyřídit náhradu řidičského průkazu",
+          "body_cs": "O vydání nového řidičského průkazu se žádá na odboru dopravy úřadu městské části.",
+          "authority": "MČ Praha 13 – odbor dopravy",
+          "location": "Úřad MČ Praha 13, Sluneční náměstí 2580/13, 158 00 Praha 5",
+          "documents": ["doklad totožnosti", "žádost o vydání řidičského průkazu"],
+          "deadline_status": "manual_todo",
+          "verify_hint": "Zákon č. 361/2000 Sb., o provozu na pozemních komunikacích – ověřit lhůtu pro ohlášení ztráty řidičského průkazu.",
+          "source_type": "sbirka_zakonu",
+          "source_url": "https://www.zakonyprolidi.cz/cs/2000-361"
+        },
+        {
+          "title_cs": "Cizinci: ohlásit ztrátu průkazu o povolení k pobytu",
+          "body_cs": "Držitel pobytového oprávnění hlásí ztrátu nebo odcizení průkazu Ministerstvu vnitra (OAMP).",
+          "authority": "Ministerstvo vnitra ČR – OAMP",
+          "documents": ["cestovní doklad", "protokol Policie ČR při odcizení"],
+          "deadline_status": "manual_todo",
+          "verify_hint": "Zákon č. 326/1999 Sb., o pobytu cizinců – ověřit lhůtu pro ohlášení ztráty průkazu o povolení k pobytu.",
+          "source_type": "sbirka_zakonu",
+          "source_url": "https://www.zakonyprolidi.cz/cs/1999-326"
+        }
+      ]
+    },
+    {
+      "slug": "uzavreni-manzelstvi",
+      "title_cs": "Uzavření manželství",
+      "category": "Rodina",
+      "audience": "all",
+      "summary_cs": "Domluva obřadu na matrice ÚMČ Praha 13, potřebné doklady a navazující změna dokladů po svatbě.",
+      "katalog_keywords": "uzavření manželství, matrika, oddací list, svatba, snoubenci",
+      "steps": [
+        {
+          "title_cs": "Domluvit termín a místo obřadu na matrice",
+          "body_cs": "Matriční úřad je příslušný podle místa konání obřadu. MČ Praha 13 má obřadní síň i možnost obřadu na jiném vhodném místě.",
+          "authority": "MČ Praha 13 – matrika",
+          "location": "Úřad MČ Praha 13, Sluneční náměstí 2580/13, 158 00 Praha 5",
+          "deadline_status": "not_applicable",
+          "source_type": "praha13",
+          "source_url": "https://www.praha13.cz/jak-si-zaridit/"
+        },
+        {
+          "title_cs": "Podat dotazník k uzavření manželství a doložit doklady",
+          "body_cs": "Snoubenci vyplní dotazník a předloží doklady. Cizinci dokládají navíc vysvědčení o právní způsobilosti k uzavření manželství a překlad dokladů.",
+          "authority": "MČ Praha 13 – matrika",
+          "location": "Úřad MČ Praha 13, Sluneční náměstí 2580/13, 158 00 Praha 5",
+          "documents": ["občanské průkazy nebo cestovní doklady snoubenců", "rodné listy", "doklad o rodinném stavu (rozsudek o rozvodu, úmrtní list)", "cizinci: vysvědčení o právní způsobilosti k uzavření manželství a úřední překlad dokladů"],
+          "deadline_status": "manual_todo",
+          "verify_hint": "Zákon č. 301/2000 Sb., o matrikách – ověřit, jak staré mohou být doklady cizince (vysvědčení o právní způsobilosti) a lhůty před obřadem.",
+          "source_type": "sbirka_zakonu",
+          "source_url": "https://www.zakonyprolidi.cz/cs/2000-301"
+        },
+        {
+          "title_cs": "Uzavřít manželství a převzít oddací list",
+          "body_cs": "Po obřadu matrika provede zápis do knihy manželství a vydá oddací list.",
+          "authority": "MČ Praha 13 – matrika",
+          "location": "Úřad MČ Praha 13, Sluneční náměstí 2580/13, 158 00 Praha 5",
+          "deadline_status": "not_applicable",
+          "source_type": "sbirka_zakonu",
+          "source_url": "https://www.zakonyprolidi.cz/cs/2000-301"
+        },
+        {
+          "title_cs": "Vyměnit doklady po změně příjmení",
+          "body_cs": "Při změně příjmení je nutné požádat o nový občanský průkaz, případně cestovní pas a řidičský průkaz.",
+          "authority": "MČ Praha 13 – oddělení osobních dokladů",
+          "location": "Úřad MČ Praha 13, Sluneční náměstí 2580/13, 158 00 Praha 5",
+          "documents": ["oddací list", "dosavadní občanský průkaz"],
+          "deadline_status": "manual_todo",
+          "verify_hint": "Zákon č. 269/2021 Sb., o občanských průkazech – ověřit lhůtu pro podání žádosti po změně příjmení.",
+          "source_type": "sbirka_zakonu",
+          "source_url": "https://www.zakonyprolidi.cz/cs/2021-269"
+        },
+        {
+          "title_cs": "Oznámit změnu jména zdravotní pojišťovně",
+          "body_cs": "Pojištěnec oznamuje zdravotní pojišťovně změnu jména a příjmení.",
+          "authority": "Zdravotní pojišťovna pojištěnce",
+          "documents": ["oddací list", "průkaz pojištěnce"],
+          "deadline_text": "Do 30 dnů ode dne změny",
+          "deadline_days": 30,
+          "deadline_source": "§ 12 zákona č. 48/1997 Sb., o veřejném zdravotním pojištění",
+          "deadline_status": "verified",
+          "source_type": "sbirka_zakonu",
+          "source_url": "https://www.zakonyprolidi.cz/cs/1997-48"
+        }
+      ]
+    },
+    {
+      "slug": "umrti-v-rodine",
+      "title_cs": "Úmrtí v rodině (vyřízení pozůstalosti)",
+      "category": "Životní události",
+      "audience": "all",
+      "summary_cs": "Úmrtní list, vypravení pohřbu, dědické řízení u notáře a odhlášení zemřelého u institucí.",
+      "katalog_keywords": "úmrtí, úmrtní list, matrika, dědické řízení, pozůstalost, pohřeb",
+      "steps": [
+        {
+          "title_cs": "Zajistit list o prohlídce zemřelého a vypravení pohřbu",
+          "body_cs": "List o prohlídce zemřelého vystavuje lékař. Pohřeb sjednáte s pohřební službou, která zajistí i předání dokladů matrice.",
+          "authority": "Poskytovatel zdravotních služeb, pohřební služba",
+          "documents": ["občanský průkaz zemřelého", "občanský průkaz vypravitele pohřbu", "oblečení pro zemřelého"],
+          "deadline_status": "manual_todo",
+          "verify_hint": "Zákon č. 256/2001 Sb., o pohřebnictví – ověřit lhůtu pro vypravení pohřbu a povinnosti vypravitele.",
+          "source_type": "sbirka_zakonu",
+          "source_url": "https://www.zakonyprolidi.cz/cs/2001-256"
+        },
+        {
+          "title_cs": "Vyzvednout úmrtní list na matrice podle místa úmrtí",
+          "body_cs": "Úmrtní list vydá matriční úřad, v jehož obvodu k úmrtí došlo. Zemřel-li člověk v Praze 13, je příslušná matrika ÚMČ Praha 13.",
+          "authority": "Matriční úřad podle místa úmrtí (např. MČ Praha 13 – matrika)",
+          "location": "Úřad MČ Praha 13, Sluneční náměstí 2580/13, 158 00 Praha 5",
+          "documents": ["doklad totožnosti vyřizující osoby", "doklad o příbuzenském vztahu k zemřelému", "faktura od pohřební služby (u vypravitele pohřbu)"],
+          "deadline_status": "manual_todo",
+          "verify_hint": "Zákon č. 301/2000 Sb., o matrikách – ověřit lhůtu pro zápis úmrtí a vydání úmrtního listu.",
+          "source_type": "sbirka_zakonu",
+          "source_url": "https://www.zakonyprolidi.cz/cs/2000-301"
+        },
+        {
+          "title_cs": "Absolvovat dědické řízení u notáře",
+          "body_cs": "Řízení o pozůstalosti zahajuje soud z moci úřední na základě údajů z matriky. Notáře jako soudního komisaře pověří soud, sami si ho nevybíráte.",
+          "authority": "Obvodní soud pro Prahu 5 prostřednictvím pověřeného notáře",
+          "documents": ["úmrtní list", "doklady o majetku a závazcích zemřelého", "závěť, pokud existuje"],
+          "deadline_status": "not_applicable",
+          "source_type": "sbirka_zakonu",
+          "source_url": "https://www.zakonyprolidi.cz/cs/2013-292"
+        },
+        {
+          "title_cs": "Odhlásit zemřelého u pojišťovny, ČSSZ a dalších institucí",
+          "body_cs": "Je nutné vrátit doklady zemřelého, odhlásit ho u zdravotní pojišťovny, vyřídit důchod, ukončit smlouvy a převést odběrná místa energií.",
+          "authority": "Zdravotní pojišťovna, ČSSZ, MČ Praha 13, dodavatelé služeb",
+          "documents": ["úmrtní list", "občanský průkaz zemřelého", "průkaz pojištěnce zemřelého"],
+          "deadline_status": "manual_todo",
+          "verify_hint": "Zákon č. 48/1997 Sb., § 10 – ověřit lhůtu pro oznámení úmrtí zdravotní pojišťovně; u ČSSZ ověřit lhůtu pro oznámení úmrtí poživatele důchodu.",
+          "source_type": "sbirka_zakonu",
+          "source_url": "https://www.zakonyprolidi.cz/cs/1997-48"
+        },
+        {
+          "title_cs": "Požádat o pozůstalostní důchod nebo pohřebné",
+          "body_cs": "Vdovský, vdovecký a sirotčí důchod vyřizuje ČSSZ, pohřebné Úřad práce ČR.",
+          "authority": "ČSSZ, Úřad práce ČR",
+          "documents": ["úmrtní list", "oddací list nebo rodný list dítěte", "doklad totožnosti žadatele"],
+          "deadline_status": "manual_todo",
+          "verify_hint": "Zákon č. 155/1995 Sb., o důchodovém pojištění a zákon č. 117/1995 Sb., o státní sociální podpoře – ověřit lhůty pro uplatnění nároku.",
+          "source_type": "sbirka_zakonu",
+          "source_url": "https://www.zakonyprolidi.cz/cs/1995-155"
+        }
+      ]
+    },
+    {
+      "slug": "parkovaci-rezidentni-karta",
+      "title_cs": "Žádost o parkovací (rezidentní) kartu",
+      "category": "Doprava",
+      "audience": "all",
+      "summary_cs": "Ověření zóny placeného stání v Praze 13, podání žádosti a doložení vztahu k vozidlu.",
+      "katalog_keywords": "parkovací karta, zóny placeného stání, rezidentní parkování, parkovací oprávnění",
+      "steps": [
+        {
+          "title_cs": "Ověřit, zda vaše adresa leží v zóně placeného stání",
+          "body_cs": "Zóny placeného stání nepokrývají celé území Prahy 13. Bez zóny u adresy se parkovací oprávnění nevydává.",
+          "authority": "MČ Praha 13 – odbor dopravy",
+          "location": "Úřad MČ Praha 13, Sluneční náměstí 2580/13, 158 00 Praha 5",
+          "deadline_status": "not_applicable",
+          "source_type": "praha13",
+          "source_url": "https://www.praha13.cz/jak-si-zaridit/"
+        },
+        {
+          "title_cs": "Podat žádost o parkovací oprávnění",
+          "body_cs": "Žádost se podává elektronicky přes portál parkovacích oprávnění hlavního města Prahy nebo osobně na výdejně parkovacích karet.",
+          "authority": "Hlavní město Praha / MČ Praha 13 – výdejna parkovacích karet",
+          "documents": ["občanský průkaz s adresou v zóně", "velký technický průkaz vozidla", "doklad o vztahu k vozidlu (leasingová smlouva, potvrzení zaměstnavatele)"],
+          "deadline_status": "manual_todo",
+          "verify_hint": "Nařízení hl. m. Prahy o zónách placeného stání a stránka praha13.cz – ověřit lhůtu pro vyřízení žádosti a podmínky výdeje.",
+          "source_type": "praha13",
+          "source_url": "https://www.praha13.cz/jak-si-zaridit/"
+        },
+        {
+          "title_cs": "Doložit vztah k vozidlu a trvalý pobyt",
+          "body_cs": "Rezidentní oprávnění se vydává osobě s trvalým pobytem v dané oblasti, která je provozovatelem vozidla nebo jeho oprávněným uživatelem.",
+          "authority": "MČ Praha 13 – výdejna parkovacích karet",
+          "documents": ["občanský průkaz", "osvědčení o registraci vozidla", "smlouva nebo potvrzení při služebním či vypůjčeném vozidle"],
+          "deadline_status": "not_applicable",
+          "source_type": "praha13",
+          "source_url": "https://www.praha13.cz/jak-si-zaridit/"
+        },
+        {
+          "title_cs": "Prodloužit platnost karty před jejím vypršením",
+          "body_cs": "Parkovací oprávnění je časově omezené a je nutné je včas prodloužit, jinak parkujete bez oprávnění.",
+          "authority": "Hlavní město Praha / MČ Praha 13 – výdejna parkovacích karet",
+          "deadline_status": "manual_todo",
+          "verify_hint": "Nařízení hl. m. Prahy o zónách placeného stání – ověřit dobu platnosti oprávnění a nejzazší termín pro prodloužení.",
+          "source_type": "praha13",
+          "source_url": "https://www.praha13.cz/jak-si-zaridit/"
+        }
+      ]
+    },
+    {
+      "slug": "dan-z-nemovitosti",
+      "title_cs": "Daň z nemovitých věcí",
+      "category": "Daně a poplatky",
+      "audience": "all",
+      "summary_cs": "Daňové přiznání po koupi nebo změně nemovitosti a zaplacení daně finančnímu úřadu.",
+      "katalog_keywords": "daň z nemovitých věcí, daňové přiznání, finanční úřad, nemovitost",
+      "steps": [
+        {
+          "title_cs": "Zjistit, zda vám vznikla povinnost podat přiznání",
+          "body_cs": "Přiznání podáváte, pokud jste v uplynulém roce nabyli nemovitost, prodali část pozemku, dostavěli nebo jinak změnili parametry nemovitosti. Pokud se nic nezměnilo, přiznání se znovu nepodává.",
+          "authority": "Finanční úřad pro hlavní město Prahu",
+          "documents": ["výpis z katastru nemovitostí", "kupní nebo darovací smlouva", "kolaudační souhlas při novostavbě"],
+          "deadline_status": "not_applicable",
+          "source_type": "sbirka_zakonu",
+          "source_url": "https://www.zakonyprolidi.cz/cs/1992-338"
+        },
+        {
+          "title_cs": "Podat daňové přiznání k dani z nemovitých věcí",
+          "body_cs": "Přiznání se podává finančnímu úřadu podle místa, kde nemovitost leží. Rozhodující je stav k 1. lednu zdaňovacího období.",
+          "authority": "Finanční úřad pro hlavní město Prahu",
+          "documents": ["formulář daňového přiznání k dani z nemovitých věcí", "údaje z katastru nemovitostí"],
+          "deadline_text": "Do 31. ledna zdaňovacího období",
+          "deadline_source": "§ 13a odst. 1 zákona č. 338/1992 Sb., o dani z nemovitých věcí",
+          "deadline_status": "verified",
+          "sanction_text": "Při pozdním podání přiznání vzniká pokuta za opožděné tvrzení daně; její výši stanoví daňový řád podle délky prodlení a výše daně.",
+          "sanction_source": "§ 250 zákona č. 280/2009 Sb., daňový řád",
+          "source_type": "sbirka_zakonu",
+          "source_url": "https://www.zakonyprolidi.cz/cs/1992-338"
+        },
+        {
+          "title_cs": "Zaplatit daň z nemovitých věcí",
+          "body_cs": "Finanční úřad rozešle složenky nebo informaci do datové schránky. Daň lze platit i bezhotovostně, u vyšších částek ve splátkách.",
+          "authority": "Finanční úřad pro hlavní město Prahu",
+          "deadline_text": "Do 31. května zdaňovacího období (vyšší daň lze podle zákona zaplatit ve splátkách — hranici i termíny splátek ověřte v § 15)",
+          "deadline_source": "§ 15 odst. 1 zákona č. 338/1992 Sb., o dani z nemovitých věcí",
+          "deadline_status": "verified",
+          "sanction_text": "Při pozdní platbě vzniká úrok z prodlení podle daňového řádu.",
+          "sanction_source": "§ 252 zákona č. 280/2009 Sb., daňový řád",
+          "source_type": "sbirka_zakonu",
+          "source_url": "https://www.zakonyprolidi.cz/cs/1992-338"
+        },
+        {
+          "title_cs": "Nahlásit změny nebo prodej nemovitosti v dalším roce",
+          "body_cs": "Při prodeji nemovitosti podáváte dílčí přiznání nebo oznámení, jinak vám daň bude vyměřena i nadále.",
+          "authority": "Finanční úřad pro hlavní město Prahu",
+          "deadline_text": "Do 31. ledna zdaňovacího období následujícího po roce, v němž ke změně došlo",
+          "deadline_source": "§ 13a odst. 1 zákona č. 338/1992 Sb., o dani z nemovitých věcí",
+          "deadline_status": "verified",
+          "source_type": "sbirka_zakonu",
+          "source_url": "https://www.zakonyprolidi.cz/cs/1992-338"
+        }
+      ]
+    },
+    {
+      "slug": "odpady-a-poplatek",
+      "title_cs": "Odpady a poplatek za komunální odpad",
+      "category": "Daně a poplatky",
+      "audience": "all",
+      "summary_cs": "Zapojení do svozu komunálního odpadu, ohlášení poplatkové povinnosti a třídění odpadu v Praze 13.",
+      "katalog_keywords": "komunální odpad, poplatek za odpad, svoz odpadu, sběrný dvůr, odpadové hospodářství",
+      "steps": [
+        {
+          "title_cs": "Zajistit sběrné nádoby a zapojení do svozu",
+          "body_cs": "V bytových domech řeší nádoby vlastník nebo správce domu. U rodinných domů se objednává nádoba pro konkrétní odběrné místo.",
+          "authority": "Hlavní město Praha / svozová společnost, správce domu",
+          "deadline_status": "manual_todo",
+          "verify_hint": "Podmínky hl. m. Prahy pro objednání nádob a stránka praha13.cz – ověřit lhůty pro přihlášení odběrného místa.",
+          "source_type": "praha13",
+          "source_url": "https://www.praha13.cz/jak-si-zaridit/"
+        },
+        {
+          "title_cs": "Ohlásit poplatkovou povinnost nebo její změnu",
+          "body_cs": "Poplatek za komunální odpad upravuje obecně závazná vyhláška hlavního města Prahy. Ohlašuje se vznik, změna i zánik povinnosti.",
+          "authority": "Hlavní město Praha (správce poplatku)",
+          "deadline_status": "manual_todo",
+          "verify_hint": "Zákon č. 565/1990 Sb., o místních poplatcích, § 14a a obecně závazná vyhláška hl. m. Prahy o poplatku za komunální odpad – ověřit lhůtu pro ohlášení.",
+          "source_type": "sbirka_zakonu",
+          "source_url": "https://www.zakonyprolidi.cz/cs/1990-565"
+        },
+        {
+          "title_cs": "Zaplatit poplatek ve lhůtě splatnosti",
+          "body_cs": "Splatnost a sazbu stanoví obecně závazná vyhláška. U bytových domů bývá poplatek součástí záloh na služby.",
+          "authority": "Hlavní město Praha (správce poplatku)",
+          "deadline_status": "manual_todo",
+          "verify_hint": "Obecně závazná vyhláška hl. m. Prahy o poplatku za komunální odpad – ověřit termíny splatnosti a následky prodlení.",
+          "source_type": "sbirka_zakonu",
+          "source_url": "https://www.zakonyprolidi.cz/cs/1990-565"
+        },
+        {
+          "title_cs": "Odevzdat objemný, nebezpečný a tříděný odpad",
+          "body_cs": "Praha 13 pravidelně přistavuje velkoobjemové kontejnery a provozuje se zde sběrný dvůr. Elektro a nebezpečný odpad nepatří do směsného odpadu.",
+          "authority": "MČ Praha 13 – odbor životního prostředí",
+          "location": "Úřad MČ Praha 13, Sluneční náměstí 2580/13, 158 00 Praha 5",
+          "deadline_status": "not_applicable",
+          "source_type": "praha13",
+          "source_url": "https://www.praha13.cz/jak-si-zaridit/"
+        }
+      ]
+    },
+    {
+      "slug": "nostrifikace-zahranicniho-vzdelani",
+      "title_cs": "Nostrifikace zahraničního vzdělání",
+      "category": "Vzdělávání",
+      "audience": "all",
+      "summary_cs": "Uznání zahraničního základního, středního nebo vysokoškolského vzdělání v České republice.",
+      "katalog_keywords": "nostrifikace, uznání zahraničního vzdělání, uznání dokladu o vzdělání, rovnocennost",
+      "steps": [
+        {
+          "title_cs": "Určit, který úřad o uznání rozhoduje",
+          "body_cs": "U základního a středního vzdělání rozhoduje krajský úřad, v Praze Magistrát hl. m. Prahy. U vysokoškolského vzdělání rozhoduje veřejná vysoká škola s odpovídajícím studijním programem, v některých případech ministerstvo.",
+          "authority": "Magistrát hl. m. Prahy / veřejná vysoká škola / MŠMT",
+          "deadline_status": "not_applicable",
+          "source_type": "sbirka_zakonu",
+          "source_url": "https://www.zakonyprolidi.cz/cs/2004-561"
+        },
+        {
+          "title_cs": "Podat žádost o uznání zahraničního vzdělání",
+          "body_cs": "K žádosti se dokládá originál nebo ověřená kopie dokladu o vzdělání, výpis absolvovaných předmětů a úřední překlad do češtiny. Podle země původu je nutná apostila nebo superlegalizace.",
+          "authority": "Magistrát hl. m. Prahy / veřejná vysoká škola",
+          "documents": ["doklad o vzdělání (ověřená kopie)", "výpis o absolvovaných předmětech a hodinové dotaci", "úřední překlad do českého jazyka", "apostila nebo superlegalizace podle země původu", "doklad totožnosti"],
+          "deadline_status": "manual_todo",
+          "verify_hint": "Zákon č. 561/2004 Sb. (§ 108) a zákon č. 111/1998 Sb. (§ 89 a 90) – ověřit lhůtu pro vydání rozhodnutí o uznání.",
+          "source_type": "sbirka_zakonu",
+          "source_url": "https://www.zakonyprolidi.cz/cs/2004-561"
+        },
+        {
+          "title_cs": "Absolvovat nostrifikační zkoušku, pokud ji úřad nařídí",
+          "body_cs": "Pokud se obsah a rozsah zahraničního studia liší od českého, úřad nařídí nostrifikační zkoušku z vybraných předmětů.",
+          "authority": "Magistrát hl. m. Prahy prostřednictvím určené školy",
+          "deadline_status": "manual_todo",
+          "verify_hint": "Vyhláška o nostrifikačních zkouškách a zákon č. 561/2004 Sb. – ověřit lhůty pro konání zkoušky a opakování.",
+          "source_type": "sbirka_zakonu",
+          "source_url": "https://www.zakonyprolidi.cz/cs/2004-561"
+        },
+        {
+          "title_cs": "Převzít rozhodnutí, případně se odvolat",
+          "body_cs": "Po nabytí právní moci rozhodnutí o uznání můžete doklad používat pro přijímací řízení i pro zaměstnavatele.",
+          "authority": "Magistrát hl. m. Prahy, odvolací orgán MŠMT",
+          "deadline_text": "Odvolání do 15 dnů ode dne oznámení rozhodnutí",
+          "deadline_days": 15,
+          "deadline_source": "§ 83 odst. 1 zákona č. 500/2004 Sb., správní řád",
+          "deadline_status": "verified",
+          "source_type": "sbirka_zakonu",
+          "source_url": "https://www.zakonyprolidi.cz/cs/2004-500"
+        }
+      ]
+    },
+    {
+      "slug": "prodlouzeni-dlouhodobeho-pobytu",
+      "title_cs": "Prodloužení dlouhodobého pobytu (cizinec)",
+      "title_uk": "Продовження довгострокового перебування (іноземець)",
+      "title_ru": "Продление долгосрочного пребывания (иностранец)",
+      "summary_cs": "Podání žádosti o prodloužení platnosti povolení k dlouhodobému pobytu na Ministerstvu vnitra (OAMP).",
+      "summary_uk": "Подання заяви про продовження дії дозволу на довгострокове перебування у МВС (OAMP).",
+      "summary_ru": "Подача заявления о продлении разрешения на долгосрочное пребывание в МВД (OAMP).",
+      "category": "Pobyt cizinců",
+      "audience": "foreigner",
+      "katalog_keywords": "povolení k dlouhodobému pobytu, prodloužení pobytu, pobyt cizinců, ministerstvo vnitra",
+      "steps": [
+        {
+          "title_cs": "Připravit doklady k žádosti",
+          "title_uk": "Підготувати документи до заяви",
+          "title_ru": "Подготовить документы к заявлению",
+          "body_cs": "Standardně se dokládá cestovní doklad, doklad o zajištění ubytování, doklad o zajištění prostředků k pobytu a fotografie; podle účelu pobytu i další doklady.",
+          "body_uk": "Зазвичай подаються проїзний документ, документ про забезпечення житлом, документ про наявність коштів і фотографія; залежно від мети перебування також інші документи.",
+          "body_ru": "Обычно подаются проездной документ, документ о жилье, документ о наличии средств и фотография; в зависимости от цели пребывания также другие документы.",
+          "authority": "Ministerstvo vnitra ČR – odbor azylové a migrační politiky (OAMP)",
+          "documents": ["cestovní doklad", "doklad o zajištění ubytování", "doklad o zajištění prostředků k pobytu", "fotografie", "doklad o cestovním zdravotním pojištění, je-li vyžadován"],
+          "deadline_status": "not_applicable",
+          "source_type": "sbirka_zakonu",
+          "source_url": "https://www.zakonyprolidi.cz/cs/1999-326"
+        },
+        {
+          "title_cs": "Podat žádost o prodloužení na OAMP",
+          "title_uk": "Подати заяву про продовження до OAMP",
+          "title_ru": "Подать заявление о продлении в OAMP",
+          "body_cs": "Žádost podáváte osobně na pracovišti OAMP podle místa hlášeného pobytu. Lhůta pro podání je stanovena zákonem a její nedodržení má přímý dopad na platnost pobytu.",
+          "body_uk": "Заяву подаєте особисто у відділенні OAMP за місцем зареєстрованого перебування. Строк подання встановлено законом, його недотримання прямо впливає на дійсність перебування.",
+          "body_ru": "Заявление подаёте лично в отделении OAMP по месту зарегистрированного пребывания. Срок подачи установлен законом, его несоблюдение напрямую влияет на действительность пребывания.",
+          "authority": "Ministerstvo vnitra ČR – OAMP",
+          "deadline_text": "Nejdříve 120 dnů a nejpozději 14 dnů před uplynutím platnosti dosavadního povolení k pobytu",
+          "deadline_days": 14,
+          "deadline_source": "§ 47 odst. 1 zákona č. 326/1999 Sb., o pobytu cizinců na území ČR",
+          "deadline_status": "verified",
+          "sanction_text": "Pokud žádost nepodáte včas, povolení k pobytu uplynutím platnosti skončí. Zákon řeší i situaci, kdy lhůtu nebylo možné dodržet z důvodů nezávislých na vůli cizince – pak je nutné žádost podat do 3 pracovních dnů po odpadnutí těchto důvodů.",
+          "sanction_source": "§ 47 zákona č. 326/1999 Sb., o pobytu cizinců na území ČR",
+          "source_type": "sbirka_zakonu",
+          "source_url": "https://www.zakonyprolidi.cz/cs/1999-326"
+        },
+        {
+          "title_cs": "Poskytnout biometrické údaje a převzít průkaz",
+          "title_uk": "Надати біометричні дані та отримати картку",
+          "title_ru": "Сдать биометрические данные и получить карту",
+          "body_cs": "Po kladném vyřízení vás OAMP vyzve k pořízení biometrických údajů a následně k převzetí průkazu o povolení k pobytu.",
+          "body_uk": "Після позитивного рішення OAMP запросить вас для зняття біометричних даних і згодом для отримання картки.",
+          "body_ru": "После положительного решения OAMP пригласит вас для снятия биометрических данных и затем для получения карты.",
+          "authority": "Ministerstvo vnitra ČR – OAMP",
+          "documents": ["cestovní doklad", "výzva k převzetí průkazu"],
+          "deadline_status": "manual_todo",
+          "verify_hint": "Zákon č. 326/1999 Sb. – ověřit lhůtu pro dostavení se k pořízení biometrických údajů a pro převzetí průkazu po výzvě.",
+          "source_type": "sbirka_zakonu",
+          "source_url": "https://www.zakonyprolidi.cz/cs/1999-326"
+        },
+        {
+          "title_cs": "Vědět, jak je to s pobytem během řízení",
+          "title_uk": "Знати, що з перебуванням під час розгляду заяви",
+          "title_ru": "Знать, что с пребыванием во время рассмотрения заявления",
+          "body_cs": "Podáte-li žádost včas a řízení není do skončení platnosti povolení ukončeno, považuje se pobyt do rozhodnutí za oprávněný. Doklad o podání žádosti si uschovejte.",
+          "body_uk": "Якщо ви подали заяву вчасно і розгляд не завершено до закінчення дії дозволу, перебування до рішення вважається законним. Збережіть підтвердження подання заяви.",
+          "body_ru": "Если вы подали заявление вовремя и рассмотрение не завершено до окончания действия разрешения, пребывание до решения считается законным. Сохраните подтверждение подачи заявления.",
+          "authority": "Ministerstvo vnitra ČR – OAMP",
+          "deadline_status": "not_applicable",
+          "source_type": "sbirka_zakonu",
+          "source_url": "https://www.zakonyprolidi.cz/cs/1999-326"
+        }
+      ]
+    },
+    {
+      "slug": "zmena-zamestnavatele-zamestnanecka-karta",
+      "title_cs": "Změna zaměstnavatele u zaměstnanecké karty (cizinec)",
+      "title_uk": "Зміна роботодавця при картці працівника (іноземець)",
+      "title_ru": "Смена работодателя при карте работника (иностранец)",
+      "summary_cs": "Oznámení změny zaměstnavatele nebo pracovní pozice Ministerstvu vnitra před nástupem k novému zaměstnavateli.",
+      "summary_uk": "Повідомлення МВС про зміну роботодавця або посади до початку роботи в нового роботодавця.",
+      "summary_ru": "Уведомление МВД о смене работодателя или должности до начала работы у нового работодателя.",
+      "category": "Pobyt cizinců",
+      "audience": "foreigner",
+      "katalog_keywords": "zaměstnanecká karta, změna zaměstnavatele, pobyt cizinců, volné pracovní místo",
+      "steps": [
+        {
+          "title_cs": "Ověřit, že nové pracovní místo splňuje podmínky",
+          "title_uk": "Перевірити, що нова вакансія відповідає умовам",
+          "title_ru": "Проверить, что новая вакансия соответствует условиям",
+          "body_cs": "Nové místo musí zpravidla být vedeno v centrální evidenci volných pracovních míst obsaditelných držiteli zaměstnanecké karty a musí odpovídat vaší kvalifikaci.",
+          "body_uk": "Нова вакансія зазвичай має бути в центральному реєстрі вільних робочих місць для власників картки працівника і відповідати вашій кваліфікації.",
+          "body_ru": "Новая вакансия обычно должна быть в центральном реестре свободных рабочих мест для владельцев карты работника и соответствовать вашей квалификации.",
+          "authority": "Úřad práce ČR, Ministerstvo vnitra ČR – OAMP",
+          "deadline_status": "not_applicable",
+          "source_type": "sbirka_zakonu",
+          "source_url": "https://www.zakonyprolidi.cz/cs/1999-326"
+        },
+        {
+          "title_cs": "Oznámit změnu zaměstnavatele Ministerstvu vnitra",
+          "title_uk": "Повідомити МВС про зміну роботодавця",
+          "title_ru": "Уведомить МВД о смене работодателя",
+          "body_cs": "Změnu zaměstnavatele, pracovního zařazení nebo zaměstnání na další pracovní pozici je nutné oznámit OAMP předem na stanoveném formuláři. Konkrétní lhůtu ověřte, zákon se v této věci opakovaně měnil.",
+          "body_uk": "Про зміну роботодавця, посади або додаткову роботу потрібно заздалегідь повідомити OAMP на встановленому бланку. Точний строк перевірте, закон у цій частині неодноразово змінювався.",
+          "body_ru": "О смене работодателя, должности или дополнительной работе нужно заранее уведомить OAMP на установленном бланке. Точный срок проверьте, закон в этой части неоднократно менялся.",
+          "authority": "Ministerstvo vnitra ČR – OAMP",
+          "documents": ["formulář oznámení změny zaměstnavatele", "pracovní smlouva nebo smlouva o smlouvě budoucí", "doklad o kvalifikaci, je-li vyžadován"],
+          "deadline_status": "manual_todo",
+          "verify_hint": "§ 42g zákona č. 326/1999 Sb. – ověřit aktuální lhůtu pro oznámení změny zaměstnavatele před nástupem a lhůtu pro vyjádření ministerstva.",
+          "source_type": "sbirka_zakonu",
+          "source_url": "https://www.zakonyprolidi.cz/cs/1999-326"
+        },
+        {
+          "title_cs": "Nenastupovat dřív, než je změna vyřízena",
+          "title_uk": "Не починати роботу раніше, ніж зміну буде оформлено",
+          "title_ru": "Не начинать работу раньше, чем изменение будет оформлено",
+          "body_cs": "Práce u nového zaměstnavatele před vyřízením oznámení může být posouzena jako nelegální práce a ohrozit platnost zaměstnanecké karty.",
+          "body_uk": "Робота в нового роботодавця до оформлення повідомлення може вважатися нелегальною працею і поставити під загрозу дійсність картки працівника.",
+          "body_ru": "Работа у нового работодателя до оформления уведомления может считаться нелегальной работой и поставить под угрозу действительность карты работника.",
+          "authority": "Ministerstvo vnitra ČR – OAMP",
+          "deadline_status": "manual_todo",
+          "verify_hint": "§ 42g zákona č. 326/1999 Sb. a zákon č. 435/2004 Sb., o zaměstnanosti – ověřit, odkdy lze u nového zaměstnavatele začít pracovat.",
+          "source_type": "sbirka_zakonu",
+          "source_url": "https://www.zakonyprolidi.cz/cs/1999-326"
+        },
+        {
+          "title_cs": "Nový zaměstnavatel informuje Úřad práce ČR o nástupu",
+          "title_uk": "Новий роботодавець інформує Службу зайнятості про початок роботи",
+          "title_ru": "Новый работодатель информирует Службу занятости о начале работы",
+          "body_cs": "Zaměstnavatel je povinen informovat krajskou pobočku Úřadu práce ČR o nástupu cizince k výkonu práce.",
+          "body_uk": "Роботодавець зобов'язаний повідомити крайове відділення Служби зайнятості ЧР про початок роботи іноземця.",
+          "body_ru": "Работодатель обязан сообщить краевому отделению Службы занятости ЧР о начале работы иностранца.",
+          "authority": "Úřad práce ČR (povinnost zaměstnavatele)",
+          "deadline_text": "Nejpozději v den nástupu cizince k výkonu práce",
+          "deadline_source": "§ 87 zákona č. 435/2004 Sb., o zaměstnanosti",
+          "deadline_status": "verified",
+          "source_type": "sbirka_zakonu",
+          "source_url": "https://www.zakonyprolidi.cz/cs/2004-435"
+        }
+      ]
+    },
+    {
+      "slug": "oznameni-zmeny-adresy-oamp",
+      "title_cs": "Oznámení změny adresy na OAMP (cizinec)",
+      "title_uk": "Повідомлення про зміну адреси в OAMP (іноземець)",
+      "title_ru": "Уведомление об изменении адреса в OAMP (иностранец)",
+      "summary_cs": "Ohlášení nové adresy pobytu Ministerstvu vnitra a doložení zajištění ubytování.",
+      "summary_uk": "Повідомлення нової адреси проживання МВС і підтвердження забезпечення житлом.",
+      "summary_ru": "Сообщение нового адреса проживания МВД и подтверждение обеспечения жильём.",
+      "category": "Pobyt cizinců",
+      "audience": "foreigner",
+      "katalog_keywords": "hlášení změny místa pobytu, cizinec, ministerstvo vnitra, ubytování",
+      "steps": [
+        {
+          "title_cs": "Ohlásit změnu místa pobytu Ministerstvu vnitra",
+          "title_uk": "Повідомити МВС про зміну місця проживання",
+          "title_ru": "Сообщить МВД об изменении места пребывания",
+          "body_cs": "Držitel dlouhodobého pobytu nebo trvalého pobytu hlásí změnu adresy pracovišti OAMP. Lhůty se liší podle druhu pobytu, proto je nutné je ověřit.",
+          "body_uk": "Власник довгострокового або постійного проживання повідомляє про зміну адреси відділення OAMP. Строки різняться залежно від типу перебування, тому їх треба перевірити.",
+          "body_ru": "Обладатель долгосрочного или постоянного пребывания сообщает об изменении адреса в отделение OAMP. Сроки различаются в зависимости от типа пребывания, поэтому их нужно проверить.",
+          "authority": "Ministerstvo vnitra ČR – OAMP",
+          "documents": ["cestovní doklad", "průkaz o povolení k pobytu", "doklad o zajištění ubytování na nové adrese"],
+          "deadline_status": "manual_todo",
+          "verify_hint": "§ 98 zákona č. 326/1999 Sb. – ověřit lhůtu pro hlášení změny místa pobytu; liší se podle druhu pobytového oprávnění.",
+          "source_type": "sbirka_zakonu",
+          "source_url": "https://www.zakonyprolidi.cz/cs/1999-326"
+        },
+        {
+          "title_cs": "Doložit zajištění ubytování na nové adrese",
+          "title_uk": "Підтвердити забезпечення житлом за новою адресою",
+          "title_ru": "Подтвердить обеспечение жильём по новому адресу",
+          "body_cs": "Dokládá se nájemní smlouva nebo potvrzení o zajištění ubytování s úředně ověřeným podpisem ubytovatele.",
+          "body_uk": "Подається договір оренди або підтвердження про забезпечення житлом із нотаріально засвідченим підписом власника житла.",
+          "body_ru": "Подаётся договор аренды или подтверждение об обеспечении жильём с нотариально заверенной подписью собственника жилья.",
+          "authority": "Ministerstvo vnitra ČR – OAMP",
+          "documents": ["nájemní smlouva nebo potvrzení o zajištění ubytování", "úředně ověřený podpis ubytovatele", "výpis z katastru nemovitostí, je-li vyžadován"],
+          "deadline_status": "not_applicable",
+          "source_type": "sbirka_zakonu",
+          "source_url": "https://www.zakonyprolidi.cz/cs/1999-326"
+        },
+        {
+          "title_cs": "Nechat si změnu zapsat do průkazu o povolení k pobytu",
+          "title_uk": "Внести зміну до картки дозволу на проживання",
+          "title_ru": "Внести изменение в карту разрешения на пребывание",
+          "body_cs": "Podle druhu pobytu se nová adresa zapisuje do průkazu nebo do evidence ministerstva.",
+          "body_uk": "Залежно від типу перебування нова адреса вноситься до картки або до реєстру міністерства.",
+          "body_ru": "В зависимости от типа пребывания новый адрес вносится в карту или в реестр министерства.",
+          "authority": "Ministerstvo vnitra ČR – OAMP",
+          "deadline_status": "manual_todo",
+          "verify_hint": "Zákon č. 326/1999 Sb. – ověřit, zda a v jaké lhůtě je nutné požádat o zápis nové adresy do průkazu.",
+          "source_type": "sbirka_zakonu",
+          "source_url": "https://www.zakonyprolidi.cz/cs/1999-326"
+        },
+        {
+          "title_cs": "Oznámit novou adresu zdravotní pojišťovně a zaměstnavateli",
+          "title_uk": "Повідомити нову адресу страховій компанії та роботодавцю",
+          "title_ru": "Сообщить новый адрес страховой компании и работодателю",
+          "body_cs": "Jste-li účastníkem veřejného zdravotního pojištění, oznamte změnu své zdravotní pojišťovně. Informujte i zaměstnavatele a školu dítěte.",
+          "body_uk": "Якщо ви учасник державного медичного страхування, повідомте зміну своїй страховій компанії. Поінформуйте також роботодавця та школу дитини.",
+          "body_ru": "Если вы участник государственного медицинского страхования, сообщите об изменении своей страховой компании. Проинформируйте также работодателя и школу ребёнка.",
+          "authority": "Zdravotní pojišťovna, zaměstnavatel",
+          "deadline_text": "Do 30 dnů ode dne změny",
+          "deadline_days": 30,
+          "deadline_source": "§ 12 zákona č. 48/1997 Sb., o veřejném zdravotním pojištění",
+          "deadline_status": "verified",
+          "source_type": "sbirka_zakonu",
+          "source_url": "https://www.zakonyprolidi.cz/cs/1997-48"
+        }
+      ]
+    },
+    {
+      "slug": "adaptacne-integracni-kurz",
+      "title_cs": "Adaptačně-integrační kurz (cizinec)",
+      "title_uk": "Адаптаційно-інтеграційний курс (іноземець)",
+      "title_ru": "Адаптационно-интеграционный курс (иностранец)",
+      "summary_cs": "Povinnost absolvovat adaptačně-integrační kurz po vydání pobytového oprávnění a doložení potvrzení.",
+      "summary_uk": "Обов'язок пройти адаптаційно-інтеграційний курс після отримання дозволу на проживання та подання довідки.",
+      "summary_ru": "Обязанность пройти адаптационно-интеграционный курс после получения разрешения на пребывание и подача справки.",
+      "category": "Pobyt cizinců",
+      "audience": "foreigner",
+      "katalog_keywords": "adaptačně-integrační kurz, integrace cizinců, vítejte v české republice",
+      "steps": [
+        {
+          "title_cs": "Zjistit, zda se povinnost vztahuje na vás",
+          "title_uk": "З'ясувати, чи стосується вас цей обов'язок",
+          "title_ru": "Выяснить, распространяется ли на вас эта обязанность",
+          "body_cs": "Povinnost se týká vymezené skupiny cizinců, kteří převzali průkaz o povolení k pobytu. Zákon stanoví i výjimky (například pro některé kategorie pobytu a věkové skupiny).",
+          "body_uk": "Обов'язок стосується визначеної групи іноземців, які отримали картку дозволу на проживання. Закон передбачає й винятки (наприклад, для деяких категорій перебування та вікових груп).",
+          "body_ru": "Обязанность касается определённой группы иностранцев, получивших карту разрешения на пребывание. Закон предусматривает и исключения (например, для некоторых категорий пребывания и возрастных групп).",
+          "authority": "Ministerstvo vnitra ČR – OAMP",
+          "deadline_status": "not_applicable",
+          "source_type": "sbirka_zakonu",
+          "source_url": "https://www.zakonyprolidi.cz/cs/1999-326"
+        },
+        {
+          "title_cs": "Zaregistrovat se na termín kurzu",
+          "title_uk": "Зареєструватися на курс",
+          "title_ru": "Зарегистрироваться на курс",
+          "body_cs": "Kurz se objednává online a koná se v akreditovaných centrech, v Praze zejména v Integračním centru Praha. Kurz probíhá s tlumočením do vybraných jazyků.",
+          "body_uk": "Курс бронюється онлайн і проходить в акредитованих центрах, у Празі насамперед в Інтеграційному центрі Прага. Курс проводиться з перекладом обраними мовами.",
+          "body_ru": "Курс бронируется онлайн и проходит в аккредитованных центрах, в Праге прежде всего в Интеграционном центре Прага. Курс проводится с переводом на выбранные языки.",
+          "authority": "Akreditované centrum (např. Integrační centrum Praha)",
+          "documents": ["cestovní doklad", "průkaz o povolení k pobytu", "doklad o zaplacení kurzu"],
+          "deadline_status": "not_applicable",
+          "source_type": "sbirka_zakonu",
+          "source_url": "https://www.zakonyprolidi.cz/cs/1999-326"
+        },
+        {
+          "title_cs": "Absolvovat kurz ve lhůtě stanovené zákonem",
+          "title_uk": "Пройти курс у встановлений законом строк",
+          "title_ru": "Пройти курс в установленный законом срок",
+          "body_cs": "Kurz je nutné absolvovat do jednoho roku ode dne převzetí průkazu o povolení k pobytu.",
+          "body_uk": "Курс потрібно пройти протягом одного року з дня отримання картки дозволу на проживання.",
+          "body_ru": "Курс необходимо пройти в течение одного года со дня получения карты разрешения на пребывание.",
+          "authority": "Ministerstvo vnitra ČR – OAMP",
+          "deadline_text": "Do 1 roku ode dne převzetí průkazu o povolení k pobytu",
+          "deadline_days": 365,
+          "deadline_source": "§ 155b zákona č. 326/1999 Sb., o pobytu cizinců na území ČR",
+          "deadline_status": "verified",
+          "source_type": "sbirka_zakonu",
+          "source_url": "https://www.zakonyprolidi.cz/cs/1999-326"
+        },
+        {
+          "title_cs": "Uschovat potvrzení o absolvování kurzu",
+          "title_uk": "Зберегти довідку про проходження курсу",
+          "title_ru": "Сохранить справку о прохождении курса",
+          "body_cs": "Potvrzení může být vyžadováno v dalším pobytovém řízení. Nesplnění povinnosti je přestupkem podle zákona o pobytu cizinců.",
+          "body_uk": "Довідку можуть вимагати в подальшому міграційному провадженні. Невиконання обов'язку є правопорушенням за законом про перебування іноземців.",
+          "body_ru": "Справку могут потребовать в дальнейшем миграционном производстве. Невыполнение обязанности является правонарушением по закону о пребывании иностранцев.",
+          "authority": "Ministerstvo vnitra ČR – OAMP",
+          "documents": ["potvrzení o absolvování adaptačně-integračního kurzu"],
+          "deadline_status": "not_applicable",
+          "sanction_text": "Neabsolvování kurzu ve lhůtě je přestupkem podle zákona o pobytu cizinců; konkrétní výši pokuty je nutné ověřit v platném znění zákona.",
+          "sanction_source": "zákon č. 326/1999 Sb., o pobytu cizinců na území ČR",
+          "source_type": "sbirka_zakonu",
+          "source_url": "https://www.zakonyprolidi.cz/cs/1999-326"
+        }
+      ]
+    },
+    {
+      "slug": "docasna-ochrana-registrace-prodlouzeni",
+      "title_cs": "Dočasná ochrana — registrace a prodloužení",
+      "title_uk": "Тимчасовий захист — реєстрація та продовження",
+      "title_ru": "Временная защита — регистрация и продление",
+      "summary_cs": "Registrace dočasné ochrany a její pravidelné prodlužování podle zákona Lex Ukrajina. Termíny se mění novelami, vždy je nutné je ověřit.",
+      "summary_uk": "Реєстрація тимчасового захисту та його регулярне продовження за законом Lex Ukrajina. Строки змінюються з кожною поправкою, їх завжди треба перевіряти.",
+      "summary_ru": "Регистрация временной защиты и её регулярное продление по закону Lex Ukrajina. Сроки меняются с каждой поправкой, их всегда нужно проверять.",
+      "category": "Pobyt cizinců",
+      "audience": "foreigner",
+      "katalog_keywords": "dočasná ochrana, lex ukrajina, registrace, prodloužení dočasné ochrany",
+      "steps": [
+        {
+          "title_cs": "Zaregistrovat dočasnou ochranu",
+          "title_uk": "Зареєструвати тимчасовий захист",
+          "title_ru": "Зарегистрировать временную защиту",
+          "body_cs": "Registrace probíhá v Krajském asistenčním centru pomoci Ukrajině (KACPU) nebo na pracovišti OAMP. Vydává se vízový štítek nebo záznam o dočasné ochraně.",
+          "body_uk": "Реєстрація відбувається в Крайовому асистенційному центрі допомоги Україні (KACPU) або у відділенні OAMP. Видається візова наліпка або запис про тимчасовий захист.",
+          "body_ru": "Регистрация проходит в Краевом ассистенционном центре помощи Украине (KACPU) или в отделении OAMP. Выдаётся визовая наклейка или запись о временной защите.",
+          "authority": "Ministerstvo vnitra ČR – OAMP / KACPU",
+          "documents": ["cestovní doklad nebo jiný doklad totožnosti", "doklad o zajištění ubytování", "fotografie, je-li vyžadována"],
+          "deadline_status": "manual_todo",
+          "verify_hint": "Zákon č. 65/2022 Sb. (Lex Ukrajina) v platném znění – ověřit aktuální podmínky a lhůty registrace; mění se novelami.",
+          "source_type": "sbirka_zakonu",
+          "source_url": "https://www.zakonyprolidi.cz/cs/2022-65"
+        },
+        {
+          "title_cs": "Prodloužit dočasnou ochranu v zákonem stanoveném období",
+          "title_uk": "Продовжити тимчасовий захист у встановлений законом період",
+          "title_ru": "Продлить временную защиту в установленный законом период",
+          "body_cs": "Prodloužení se provádí zpravidla ve dvou krocích – online registrací a následným osobním potvrzením. Období pro prodloužení stanoví aktuální znění zákona.",
+          "body_uk": "Продовження зазвичай відбувається у два етапи — онлайн-реєстрація і подальше особисте підтвердження. Період продовження визначає чинна редакція закону.",
+          "body_ru": "Продление обычно проходит в два этапа — онлайн-регистрация и последующее личное подтверждение. Период продления определяет действующая редакция закона.",
+          "authority": "Ministerstvo vnitra ČR – OAMP",
+          "documents": ["cestovní doklad", "doklad o dočasné ochraně", "potvrzení o online registraci"],
+          "deadline_status": "manual_todo",
+          "verify_hint": "Zákon č. 65/2022 Sb. (Lex Ukrajina) v platném znění a informace Ministerstva vnitra – ověřit konkrétní období pro prodloužení v daném roce.",
+          "source_type": "sbirka_zakonu",
+          "source_url": "https://www.zakonyprolidi.cz/cs/2022-65"
+        },
+        {
+          "title_cs": "Vyřídit zdravotní pojištění a evidenci u pojišťovny",
+          "title_uk": "Оформити медичне страхування та реєстрацію у страховій компанії",
+          "title_ru": "Оформить медицинское страхование и регистрацию в страховой компании",
+          "body_cs": "Držitelé dočasné ochrany jsou zařazeni do systému veřejného zdravotního pojištění. Po registraci je třeba vyřídit průkaz pojištěnce a případně změnu kategorie plátce.",
+          "body_uk": "Особи з тимчасовим захистом включені до системи державного медичного страхування. Після реєстрації треба оформити картку застрахованої особи та за потреби змінити категорію платника.",
+          "body_ru": "Лица с временной защитой включены в систему государственного медицинского страхования. После регистрации нужно оформить карту застрахованного и при необходимости изменить категорию плательщика.",
+          "authority": "Zdravotní pojišťovna (zpravidla VZP)",
+          "documents": ["doklad o dočasné ochraně", "doklad totožnosti"],
+          "deadline_status": "manual_todo",
+          "verify_hint": "Zákon č. 48/1997 Sb. a zákon č. 65/2022 Sb. – ověřit lhůty pro přihlášení a oznámení změn pojišťovně.",
+          "source_type": "sbirka_zakonu",
+          "source_url": "https://www.zakonyprolidi.cz/cs/1997-48"
+        },
+        {
+          "title_cs": "Hlásit změnu adresy pobytu",
+          "title_uk": "Повідомляти про зміну адреси проживання",
+          "title_ru": "Сообщать об изменении адреса проживания",
+          "body_cs": "Změnu místa pobytu je nutné nahlásit Ministerstvu vnitra. Bez aktuální adresy vám nemusí dorazit důležitá úřední oznámení.",
+          "body_uk": "Про зміну місця проживання потрібно повідомити МВС. Без актуальної адреси ви можете не отримати важливі офіційні повідомлення.",
+          "body_ru": "Об изменении места проживания нужно уведомить МВД. Без актуального адреса вы можете не получить важные официальные уведомления.",
+          "authority": "Ministerstvo vnitra ČR – OAMP",
+          "deadline_status": "manual_todo",
+          "verify_hint": "Zákon č. 65/2022 Sb. ve spojení se zákonem č. 326/1999 Sb. – ověřit lhůtu pro hlášení změny adresy u držitelů dočasné ochrany.",
+          "source_type": "sbirka_zakonu",
+          "source_url": "https://www.zakonyprolidi.cz/cs/2022-65"
+        }
+      ]
+    },
+    {
+      "slug": "zdravotni-pojisteni-pro-cizince",
+      "title_cs": "Zdravotní pojištění pro cizince",
+      "title_uk": "Медичне страхування для іноземців",
+      "title_ru": "Медицинское страхование для иностранцев",
+      "summary_cs": "Rozlišení veřejného a komerčního zdravotního pojištění a povinnosti při jeho sjednání a doložení.",
+      "summary_uk": "Різниця між державним і комерційним медичним страхуванням та обов'язки при його оформленні й підтвердженні.",
+      "summary_ru": "Разница между государственным и коммерческим медицинским страхованием и обязанности при его оформлении и подтверждении.",
+      "category": "Zdraví",
+      "audience": "foreigner",
+      "katalog_keywords": "zdravotní pojištění cizinců, veřejné zdravotní pojištění, komerční zdravotní pojištění, pojištěnec",
+      "steps": [
+        {
+          "title_cs": "Zjistit, do které kategorie pojištění patříte",
+          "title_uk": "З'ясувати, до якої категорії страхування ви належите",
+          "title_ru": "Выяснить, к какой категории страхования вы относитесь",
+          "body_cs": "Zaměstnanci českého zaměstnavatele, osoby s trvalým pobytem a držitelé dočasné ochrany spadají do veřejného zdravotního pojištění. Ostatní si sjednávají komerční cestovní zdravotní pojištění.",
+          "body_uk": "Працівники чеського роботодавця, особи з постійним проживанням і особи з тимчасовим захистом належать до державного медичного страхування. Інші оформлюють комерційне медичне страхування.",
+          "body_ru": "Работники чешского работодателя, лица с постоянным проживанием и лица с временной защитой относятся к государственному медицинскому страхованию. Остальные оформляют коммерческое медицинское страхование.",
+          "authority": "Zdravotní pojišťovna / komerční pojišťovna",
+          "deadline_status": "not_applicable",
+          "source_type": "sbirka_zakonu",
+          "source_url": "https://www.zakonyprolidi.cz/cs/1997-48"
+        },
+        {
+          "title_cs": "Zaměstnanci: nechat se přihlásit zaměstnavatelem",
+          "title_uk": "Працівники: бути зареєстрованим роботодавцем",
+          "title_ru": "Работники: быть зарегистрированным работодателем",
+          "body_cs": "Zaměstnavatel oznamuje zdravotní pojišťovně nástup zaměstnance do zaměstnání. Poté obdržíte průkaz pojištěnce.",
+          "body_uk": "Роботодавець повідомляє страховій компанії про початок роботи працівника. Після цього ви отримаєте картку застрахованої особи.",
+          "body_ru": "Работодатель сообщает страховой компании о начале работы сотрудника. После этого вы получите карту застрахованного.",
+          "authority": "Zaměstnavatel, zdravotní pojišťovna",
+          "documents": ["pracovní smlouva", "doklad totožnosti", "průkaz o povolení k pobytu"],
+          "deadline_text": "Do 8 dnů ode dne nástupu do zaměstnání",
+          "deadline_days": 8,
+          "deadline_source": "§ 10 zákona č. 48/1997 Sb., o veřejném zdravotním pojištění",
+          "deadline_status": "verified",
+          "source_type": "sbirka_zakonu",
+          "source_url": "https://www.zakonyprolidi.cz/cs/1997-48"
+        },
+        {
+          "title_cs": "Ostatní: sjednat komerční zdravotní pojištění v požadovaném rozsahu",
+          "title_uk": "Інші: оформити комерційне медичне страхування у потрібному обсязі",
+          "title_ru": "Остальные: оформить коммерческое медицинское страхование в нужном объёме",
+          "body_cs": "Zákon o pobytu cizinců stanoví požadavky na rozsah pojištění pro pobyty nad 90 dnů. Podmínky se v posledních letech měnily, ověřte aktuální znění.",
+          "body_uk": "Закон про перебування іноземців встановлює вимоги до обсягу страхування для перебування понад 90 днів. Умови останніми роками змінювалися, перевірте чинну редакцію.",
+          "body_ru": "Закон о пребывании иностранцев устанавливает требования к объёму страхования для пребывания свыше 90 дней. Условия в последние годы менялись, проверьте действующую редакцию.",
+          "authority": "Komerční pojišťovna",
+          "documents": ["cestovní doklad", "pojistná smlouva", "doklad o zaplacení pojistného"],
+          "deadline_status": "manual_todo",
+          "verify_hint": "§ 180j zákona č. 326/1999 Sb. – ověřit aktuální požadavky na rozsah a poskytovatele cestovního zdravotního pojištění.",
+          "source_type": "sbirka_zakonu",
+          "source_url": "https://www.zakonyprolidi.cz/cs/1999-326"
+        },
+        {
+          "title_cs": "Doložit doklad o pojištění v pobytovém řízení",
+          "title_uk": "Подати документ про страхування у міграційному провадженні",
+          "title_ru": "Предоставить документ о страховании в миграционном производстве",
+          "body_cs": "Doklad o zdravotním pojištění je běžnou náležitostí žádosti o pobyt i jeho prodloužení. Bez něj může být žádost zamítnuta.",
+          "body_uk": "Документ про медичне страхування є стандартною вимогою заяви про перебування та його продовження. Без нього заяву можуть відхилити.",
+          "body_ru": "Документ о медицинском страховании является стандартным требованием заявления о пребывании и его продлении. Без него заявление могут отклонить.",
+          "authority": "Ministerstvo vnitra ČR – OAMP",
+          "documents": ["doklad o cestovním zdravotním pojištění nebo potvrzení zdravotní pojišťovny"],
+          "deadline_status": "not_applicable",
+          "source_type": "sbirka_zakonu",
+          "source_url": "https://www.zakonyprolidi.cz/cs/1999-326"
+        }
+      ]
+    }
+  ]
+}
